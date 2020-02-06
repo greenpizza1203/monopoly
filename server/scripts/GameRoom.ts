@@ -35,11 +35,11 @@ export class GameRoom extends Room<State> {
         dice.startRolling();
         this.clock.setTimeout(() => {
             this.state.dice.stopRolling();
-            this.movePlayer(thisPlayer, dice)
-        }, 1000)
+            GameRoom.movePlayer(thisPlayer, dice)
+        }, 10000)
     }
 
-    private movePlayer(player: Player, dice: Dice) {
+    private static movePlayer(player: Player, dice: Dice) {
         player.move(dice.sum())
     }
 }
