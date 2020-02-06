@@ -1,5 +1,6 @@
 {
 "luxury_tax":100,
 "income_tax_flat":200,
-"income_tax_percent":10
+"income_tax_ratio":0.1,
+ "sell_ratio",0.5
 }
