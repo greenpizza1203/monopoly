@@ -1,4 +1,5 @@
 import random from "random"
+import {Schema, type} from "@colyseus/schema";
 
 
 enum DiceState {
@@ -7,10 +8,10 @@ enum DiceState {
     ROLLED
 }
 
-export class Dice {
-    firstDice: number = 0;
-    secondDice: number = 0;
-    state: DiceState = DiceState.NONEXISTENT;
+export class Dice extends Schema {
+    @type("number") firstDice: number = 0;
+    @type("number") secondDice: number = 0;
+    @type("number") state: DiceState = DiceState.NONEXISTENT;
 
     startRolling() {
         this.state = DiceState.ROLLING
