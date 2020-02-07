@@ -1,7 +1,7 @@
 import {Schema, type} from "@colyseus/schema"
 
 export class Street extends Property {
-    @type(["number"]) rentCost: ArraySchema<number>();
+      @type(["number"]) rentCost: ArraySchema<number>();
     @type("number") houseLevel:number=0;
 
     constructor(options: any) {
