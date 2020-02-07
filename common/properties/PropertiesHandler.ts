@@ -30,8 +30,8 @@ async function initProperties(): Promise<Array<any>> {
 export async function getProperties() {
     let properties = await initProperties();
     let propertiesMap = new MapSchema<Property>();
-    for (let prop in properties) {
-        console.log(prop);
-    }
+    properties.forEach(function (value, i) {
+  propertiesMap[i] = new Property(value);
+});
 }
 
