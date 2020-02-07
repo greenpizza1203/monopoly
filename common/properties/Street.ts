@@ -1,6 +1,6 @@
 import {Schema, type} from "@colyseus/schema"
 
-export class Property extends Schema {
+export class Street extends Property {
     @type("string") name: string;
     @type("string") color: string;
     @type("number") cost: string;
@@ -13,11 +13,7 @@ export class Property extends Schema {
         this.name = options.name;
         this.color = options.color;
         this.cost = options.cost;
-        this.rentCost.push(options.site);
-        this.rentCost.push(options.house_1);
-        this.rentCost.push(options.house_2);
-        this.rentCost.push(options.house_3);
-        this.rentCost.push(options.hotel);
+      
     }
     
 }
