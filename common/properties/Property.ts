@@ -14,7 +14,14 @@ export class Property extends Schema {
         this.name = options.name;
         this.color = options.color;
         this.cost = options.cost;
-      
+        let amount;
+        if(options.isStreet){
+            amount = 5
+        } else if(options.isRailroad){
+            amount = 4;
+        } 
+        for(var i =0;i<amount;i++){
+            this.rent.push(options[`level_${i}`]);
+        }
     }
-    
 }
