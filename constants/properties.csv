@@ -1,4 +1,4 @@
-name,color,cost,site,house_1,house_2,house_3,house_4,hotel
+index,name,color,cost,site,house_1,house_2,house_3,house_4,hotel
 Mediterranean Avenue,#630,60,2,10,30,90,160,250
 Baltic Avenue,#630,60,4,20,60,180,320,450
 Oriental Avenue,#09C,100,6,30,90,270,400,550
@@ -20,3 +20,4 @@ Pacific Avenue,#393,300,26,130,390,900,1100,1275
 North Carolina Avenue,#393,300,26,130,390,900,1100,1275
 Pennsylvania Avenue,#393,320,28,150,450,1000,1200,1400
 Park Place,#006,350,35,175,500,1100,1300,1500
+Boardwalk,#006,400,50,200,600,1400,1700,2000
