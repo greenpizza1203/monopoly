@@ -1,6 +1,6 @@
 import {Schema, type} from "@colyseus/schema"
 
-export class Street extends Property {
+export class Property extends Schema {
     @type("string") name: string;
     @type("string") color: string;
     @type("number") cost: string;
