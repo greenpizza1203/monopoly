@@ -1,4 +1,5 @@
 import {Schema, MapSchema, type} from "@colyseus/schema";
+import PlayerOptions from "./PlayerOptions";
 
 export class Player extends Schema {
     @type("string") username: string;

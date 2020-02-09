@@ -1,0 +1,28 @@
+
+
+.outer-box {
+    position: relative;
+    /*outline: 5px solid #000000;*/
+    /*outline-offset: -5px;*/
+    border: solid #000;
+    margin: 0 auto;
+
+}
+
+.corner-box {
+    position: absolute;
+}
+
+.property {
+    /*width: auto;*/
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.regular {
+    position: absolute;
+
+}

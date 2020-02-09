@@ -1,15 +1,12 @@
 const $ = require('jquery');
+import Renderer from './renderer/renderer'
+import colyhandler from './colyhandler/colyhandler'
+
+let renderBoy = new Renderer();
 init();
 
 function init() {
-    $(window).resize(handleResize)
-}
-
-function handleResize() {
-    let height = $(window).height();
-    let width = $(window).width();
-    const size = Math.min(height, width);
-
-    console.log(size);
+    colyhandler.init()
+    renderBoy.displayTitleScreen();
 }
 

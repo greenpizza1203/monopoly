@@ -1,22 +1,35 @@
 import Papa from "papaparse"
 import * as Path from "path";
 import * as fs from "fs";
-import {MapSchema} from "@colyseus/schema"
+import {ArraySchema} from "@colyseus/schema"
 import {Property} from "./Property"
 
-const propertiesFile = Path.join(__dirname, "../constants/normal_properties.csv");
+const propertiesFile = Path.join(__dirname, "../../constants/properties.csv");
+let properties: Array<any>;
 
+export class PropertiesHandler {
 
-async function initProperties(): Promise<Array<any>> {
+    static async init() {
+
+        properties = await initProperties();
+        // console.log(properties.length)
+    }
+}
+
+function initProperties(): Promise<Array<any>> {
 
     let buffer = fs.readFileSync(propertiesFile, "utf8");
+
     return new Promise<Array<any>>((complete) => {
             Papa.parse(buffer, {
                 header: true,
                 dynamicTyping: true,
 
                 complete: function (results) {
-                    complete(results.data);
+
+                    // properties = results.data;
+                    complete(results.data)
+
                     // console.log("Finished:", results.data);
                 }
 
@@ -27,11 +40,13 @@ async function initProperties(): Promise<Array<any>> {
 
 }
 
-export async function getProperties() {
-    let properties = await initProperties();
-    let propertiesMap = new MapSchema<Property>();
+export function getProperties() {
+
+    let propertiesMap = new ArraySchema<Property>();
+
     properties.forEach(function (value, i) {
-  propertiesMap[i] = new Property(value);
-});
+        propertiesMap[i] = new Property(value);
+    });
+    return propertiesMap;
 }
 

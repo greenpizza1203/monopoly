@@ -1,0 +1,30 @@
+.monopoly-font {
+    font-family: monofont, sans-serif;
+}
+
+#titleText {
+    font-size: 10vmin;
+    color: #fd0513;
+}
+
+#usernameInput {
+    margin-bottom:50px;
+}
+
+#playButton {
+    margin-top: 3vmin;
+    font-size: 5vmin;
+    color: #000000;
+}
+
+#titleScreen {
+    margin-right: auto;
+    margin-left: auto;
+
+    display: table;
+}
+
+.asRow {
+    display: table-row;
+}
+

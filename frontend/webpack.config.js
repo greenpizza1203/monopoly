@@ -23,4 +23,5 @@ module.exports = {
         filename: './js/bundle.js',
         path: path.resolve(__dirname, 'output'),
     },
+    devtool: 'source-map'
 };

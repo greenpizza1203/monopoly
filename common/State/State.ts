@@ -9,5 +9,5 @@ export class State extends Schema {
     @type(Player) currentTurn: Player | undefined;
     @type({map: Player}) players = new MapSchema<Player>();
     @type(Dice) dice: Dice = new Dice();
-    @type([Property]) propertiesHandler = getProperties();
+    @type([Property]) properties = getProperties();
 }

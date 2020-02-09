@@ -5,12 +5,14 @@ export class Property extends Schema {
     @type("string") color: string;
     @type("number") cost: string;
     @type("number") houseLevel: number = 0;
+    @type("number") location: number = 0;
     @type(["number"]) rentCost: ArraySchema<number> = new ArraySchema<number>();
 
 
     constructor(options: any) {
         super();
-
+        this.location = options.location;
+        console.log(this.location);
         this.name = options.name;
         this.color = options.color;
         this.cost = options.cost;

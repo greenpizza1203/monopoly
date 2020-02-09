@@ -4,6 +4,7 @@ import {State} from "../../common/State/State"
 import {Move, MoveType} from "../../common/Move";
 import {Dice} from "../../common/State/Dice";
 
+import PlayerOptions from "../../common/PlayerOptions"
 
 export class GameRoom extends Room<State> {
     onCreate() {
