@@ -3,7 +3,6 @@ import {Client, Room} from "colyseus.js";
 import renderer from "../renderer/renderer";
 import {State} from "../../../common/State/State";
 import {saveUsername} from "../pagelogic/titleScreen";
-import MainRenderer from "../renderer/MainRenderer";
 
 let client: Client;
 let room: Room<State>;

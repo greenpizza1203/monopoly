@@ -1,4 +1,4 @@
-import {getProperties, PropertiesHandler} from "../scripts/properties/PropertiesHandler";
+import {getProperties} from "../scripts/properties/PropertiesHandler";
 import fse from "fs-extra";
 import Preinit from "../scripts/Preinit";
 

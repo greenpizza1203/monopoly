@@ -90,10 +90,10 @@
 /*!*******************************!*\
   !*** ./debug/debugState.json ***!
   \*******************************/
-/*! exports provided: properties, default */
+/*! exports provided: players, properties, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"properties\":[{\"name\":\"Mediterranean Avenue\",\"color\":\"#630\",\"cost\":60,\"houseLevel\":0,\"location\":1,\"rentCost\":[]},{\"name\":\"Baltic Avenue\",\"color\":\"#630\",\"cost\":60,\"houseLevel\":0,\"location\":3,\"rentCost\":[]},{\"name\":\"Oriental Avenue\",\"color\":\"#09C\",\"cost\":100,\"houseLevel\":0,\"location\":6,\"rentCost\":[]},{\"name\":\"Vermont Avenue\",\"color\":\"#09C\",\"cost\":100,\"houseLevel\":0,\"location\":8,\"rentCost\":[]},{\"name\":\"Connecticut Avenue\",\"color\":\"#09C\",\"cost\":120,\"houseLevel\":0,\"location\":9,\"rentCost\":[]},{\"name\":\"St. Charles Place\",\"color\":\"#C4C\",\"cost\":140,\"houseLevel\":0,\"location\":11,\"rentCost\":[]},{\"name\":\"States Avenue\",\"color\":\"#C4C\",\"cost\":140,\"houseLevel\":0,\"location\":13,\"rentCost\":[]},{\"name\":\"Virginia Avenue\",\"color\":\"#C4C\",\"cost\":160,\"houseLevel\":0,\"location\":14,\"rentCost\":[]},{\"name\":\"St. James Place\",\"color\":\"#F60\",\"cost\":180,\"houseLevel\":0,\"location\":16,\"rentCost\":[]},{\"name\":\"Tennessee Avenue\",\"color\":\"#F60\",\"cost\":180,\"houseLevel\":0,\"location\":18,\"rentCost\":[]},{\"name\":\"New York Avenue\",\"color\":\"#F60\",\"cost\":200,\"houseLevel\":0,\"location\":19,\"rentCost\":[]},{\"name\":\"Kentucky Avenue\",\"color\":\"#F00\",\"cost\":220,\"houseLevel\":0,\"location\":21,\"rentCost\":[]},{\"name\":\"Indiana Avenue\",\"color\":\"#F00\",\"cost\":220,\"houseLevel\":0,\"location\":23,\"rentCost\":[]},{\"name\":\"Illinois Avenue\",\"color\":\"#F00\",\"cost\":240,\"houseLevel\":0,\"location\":24,\"rentCost\":[]},{\"name\":\"Atlantic Avenue\",\"color\":\"#FF3\",\"cost\":260,\"houseLevel\":0,\"location\":26,\"rentCost\":[]},{\"name\":\"Ventnor Avenue\",\"color\":\"#FF3\",\"cost\":260,\"houseLevel\":0,\"location\":27,\"rentCost\":[]},{\"name\":\"Marvin Gardens\",\"color\":\"#FF3\",\"cost\":280,\"houseLevel\":0,\"location\":29,\"rentCost\":[]},{\"name\":\"Pacific Avenue\",\"color\":\"#393\",\"cost\":300,\"houseLevel\":0,\"location\":31,\"rentCost\":[]},{\"name\":\"North Carolina Avenue\",\"color\":\"#393\",\"cost\":300,\"houseLevel\":0,\"location\":32,\"rentCost\":[]},{\"name\":\"Pennsylvania Avenue\",\"color\":\"#393\",\"cost\":320,\"houseLevel\":0,\"location\":34,\"rentCost\":[]},{\"name\":\"Park Place\",\"color\":\"#006\",\"cost\":350,\"houseLevel\":0,\"location\":37,\"rentCost\":[]},{\"name\":\"Boardwalk\",\"color\":\"#006\",\"cost\":400,\"houseLevel\":0,\"location\":39,\"rentCost\":[]}]}");
+module.exports = JSON.parse("{\"players\":[{\"color\":\"#300\",\"name\":\"testa\",\"money\":\"300\"},{\"color\":\"#030\",\"name\":\"testb\",\"money\":\"1500\"}],\"properties\":[{\"name\":\"Mediterranean Avenue\",\"color\":\"#630\",\"cost\":60,\"houseLevel\":0,\"location\":1,\"rentCost\":[]},{\"name\":\"Baltic Avenue\",\"color\":\"#630\",\"cost\":60,\"houseLevel\":0,\"location\":3,\"rentCost\":[]},{\"name\":\"Oriental Avenue\",\"color\":\"#09C\",\"cost\":100,\"houseLevel\":0,\"location\":6,\"rentCost\":[]},{\"name\":\"Vermont Avenue\",\"color\":\"#09C\",\"cost\":100,\"houseLevel\":0,\"location\":8,\"rentCost\":[]},{\"name\":\"Connecticut Avenue\",\"color\":\"#09C\",\"cost\":120,\"houseLevel\":0,\"location\":9,\"rentCost\":[]},{\"name\":\"St. Charles Place\",\"color\":\"#C4C\",\"cost\":140,\"houseLevel\":0,\"location\":11,\"rentCost\":[]},{\"name\":\"States Avenue\",\"color\":\"#C4C\",\"cost\":140,\"houseLevel\":0,\"location\":13,\"rentCost\":[]},{\"name\":\"Virginia Avenue\",\"color\":\"#C4C\",\"cost\":160,\"houseLevel\":0,\"location\":14,\"rentCost\":[]},{\"name\":\"St. James Place\",\"color\":\"#F60\",\"cost\":180,\"houseLevel\":0,\"location\":16,\"rentCost\":[]},{\"name\":\"Tennessee Avenue\",\"color\":\"#F60\",\"cost\":180,\"houseLevel\":0,\"location\":18,\"rentCost\":[]},{\"name\":\"New York Avenue\",\"color\":\"#F60\",\"cost\":200,\"houseLevel\":0,\"location\":19,\"rentCost\":[]},{\"name\":\"Kentucky Avenue\",\"color\":\"#F00\",\"cost\":220,\"houseLevel\":0,\"location\":21,\"rentCost\":[]},{\"name\":\"Indiana Avenue\",\"color\":\"#F00\",\"cost\":220,\"houseLevel\":0,\"location\":23,\"rentCost\":[]},{\"name\":\"Illinois Avenue\",\"color\":\"#F00\",\"cost\":240,\"houseLevel\":0,\"location\":24,\"rentCost\":[]},{\"name\":\"Atlantic Avenue\",\"color\":\"#FF3\",\"cost\":260,\"houseLevel\":0,\"location\":26,\"rentCost\":[]},{\"name\":\"Ventnor Avenue\",\"color\":\"#FF3\",\"cost\":260,\"houseLevel\":0,\"location\":27,\"rentCost\":[]},{\"name\":\"Marvin Gardens\",\"color\":\"#FF3\",\"cost\":280,\"houseLevel\":0,\"location\":29,\"rentCost\":[]},{\"name\":\"Pacific Avenue\",\"color\":\"#393\",\"cost\":300,\"houseLevel\":0,\"location\":31,\"rentCost\":[]},{\"name\":\"North Carolina Avenue\",\"color\":\"#393\",\"cost\":300,\"houseLevel\":0,\"location\":32,\"rentCost\":[]},{\"name\":\"Pennsylvania Avenue\",\"color\":\"#393\",\"cost\":320,\"houseLevel\":0,\"location\":34,\"rentCost\":[]},{\"name\":\"Park Place\",\"color\":\"#006\",\"cost\":350,\"houseLevel\":0,\"location\":37,\"rentCost\":[]},{\"name\":\"Boardwalk\",\"color\":\"#006\",\"cost\":400,\"houseLevel\":0,\"location\":39,\"rentCost\":[]}]}");
 
 /***/ }),
 
@@ -113,7 +113,7 @@ class DebugHandler {
         let require1 = __webpack_require__(/*! ../../../debug/debugState.json */ "./debug/debugState.json");
         require1.properties.forEach((prop) => {
             prop.getSide = function () {
-                console.log(this.location);
+                // console.log(this.location);
                 return locationArray[Math.floor(this.location / 10)];
             };
         });
@@ -220,26 +220,37 @@ module.exports = JSON.parse("{\"corner-ratio\":0.135,\"border\":0,\"imageList\":
 
 "use strict";
 
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-const renderer_1 = __importDefault(__webpack_require__(/*! ./renderer/renderer */ "./frontend/src/renderer/renderer.ts"));
+const renderer_1 = __webpack_require__(/*! ./renderer/renderer */ "./frontend/src/renderer/renderer.ts");
 const colyhandler_1 = __importDefault(__webpack_require__(/*! ./colyhandler/colyhandler */ "./frontend/src/colyhandler/colyhandler.ts"));
-let renderBoy = new renderer_1.default();
-init();
+init().then();
 function init() {
-    colyhandler_1.default.init();
-    renderBoy.displayTitleScreen();
+    return __awaiter(this, void 0, void 0, function* () {
+        let renderBoy = yield renderer_1.createRenderer();
+        colyhandler_1.default.init();
+        renderBoy.displayTitleScreen();
+    });
 }
 
 
 /***/ }),
 
-/***/ "./frontend/src/jquery/templateEngine.ts":
+/***/ "./frontend/src/jquery/TemplateEngine.ts":
 /*!***********************************************!*\
-  !*** ./frontend/src/jquery/templateEngine.ts ***!
+  !*** ./frontend/src/jquery/TemplateEngine.ts ***!
   \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -261,7 +272,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const jquery_1 = __importDefault(__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"));
 const jsr = __webpack_require__(/*! jsrender */ "./node_modules/jsrender/jsrender.js")();
-console.log(jsr);
+// console.log(jsr);
 let files = {};
 function promisify(fileUrl) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -287,6 +298,32 @@ function default_1(fileUrl) {
     };
 }
 exports.default = default_1;
+
+
+/***/ }),
+
+/***/ "./frontend/src/jquery/helpermethods.ts":
+/*!**********************************************!*\
+  !*** ./frontend/src/jquery/helpermethods.ts ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const jquery_1 = __importDefault(__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"));
+function createElement(tagName, id = "") {
+    let htmlElements = jquery_1.default(document.createElement(tagName));
+    if (id.trim() != "") {
+        htmlElements.attr('id', id);
+    }
+    return htmlElements;
+}
+exports.createElement = createElement;
 
 
 /***/ }),
@@ -324,10 +361,10 @@ exports.handleTitleScreen = handleTitleScreen;
 
 /***/ }),
 
-/***/ "./frontend/src/renderer/MainRenderer.ts":
-/*!***********************************************!*\
-  !*** ./frontend/src/renderer/MainRenderer.ts ***!
-  \***********************************************/
+/***/ "./frontend/src/renderer/FieldPropertyRenderer.ts":
+/*!********************************************************!*\
+  !*** ./frontend/src/renderer/FieldPropertyRenderer.ts ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -347,15 +384,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const renderer_1 = __webpack_require__(/*! ./renderer */ "./frontend/src/renderer/renderer.ts");
-const templateEngine_1 = __importDefault(__webpack_require__(/*! ../jquery/templateEngine */ "./frontend/src/jquery/templateEngine.ts"));
-// let constants = require('../../constants.json');
+const TemplateEngine_1 = __importDefault(__webpack_require__(/*! ../jquery/TemplateEngine */ "./frontend/src/jquery/TemplateEngine.ts"));
+const helpermethods_1 = __webpack_require__(/*! ../jquery/helpermethods */ "./frontend/src/jquery/helpermethods.ts");
 var propTemplates = {
-    bottom: templateEngine_1.default('html/properties/bottom_property.html'),
-    left: templateEngine_1.default('html/properties/left_property.html'),
-    right: templateEngine_1.default('html/properties/right_property.html'),
-    top: templateEngine_1.default('html/properties/top_property.html')
+    bottom: TemplateEngine_1.default('html/properties/bottom_property.html'),
+    left: TemplateEngine_1.default('html/properties/left_property.html'),
+    right: TemplateEngine_1.default('html/properties/right_property.html'),
+    top: TemplateEngine_1.default('html/properties/top_property.html')
 };
-// console.log(propertyTemplate);
 function fadeInRegularProperties(properties) {
     properties.forEach((prop) => __awaiter(this, void 0, void 0, function* () {
         let location = prop.location;
@@ -363,68 +399,13 @@ function fadeInRegularProperties(properties) {
         let htmlStringFunction = yield propTemplates[side]({
             color: prop.color,
         });
+        // console.log(propertyCells)
         renderer_1.propertyCells[location].html(htmlStringFunction);
     }));
 }
-class MainRenderer {
-    static init(state) {
-        console.log("this is the first state!", state);
-        fadeInRegularProperties(state.properties);
-    }
-}
-exports.default = MainRenderer;
-
-
-/***/ }),
-
-/***/ "./frontend/src/renderer/OutlineHandler.ts":
-/*!*************************************************!*\
-  !*** ./frontend/src/renderer/OutlineHandler.ts ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const jquery_1 = __importDefault(__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"));
-const constants_json_1 = __importDefault(__webpack_require__(/*! ../constants.json */ "./frontend/src/constants.json"));
-let outerSize = 0;
-let innerSize = 0;
-let smallSide = 0;
-let border = 0;
-let heightMargin = 0;
-let outerBox;
-let properties = [];
-function resize() {
-    outerBox.width(outerSize);
-    outerBox.height(outerSize);
-    outerBox.css('margin-top', heightMargin);
-    outerBox.css('border-width', `${border}px ${border}px`);
-    jquery_1.default(".sideline").width(innerSize);
-    jquery_1.default(".mainline").height(innerSize);
-    let valueFunction1 = ((outerSize - innerSize * 2) / 9);
-    jquery_1.default(".normalLine").height(valueFunction1);
-    // $(".vertical").each(function( index ) {
-    //     let htmlElements = $( this );
-    //     let message = htmlElements.parent().height();
-    //     htmlElements.height(message-1);
-    //     console.log( message );
-    // });
-}
-function createElement(tagName) {
-    return jquery_1.default(document.createElement(tagName));
-}
-function handleProperties() {
-    for (let i = 0; i < 40; i++) {
-        properties.push(handleAddingProperty(i));
-    }
-}
-function handleAddingProperty(i) {
-    let td = createElement('td');
+exports.fadeInRegularProperties = fadeInRegularProperties;
+function handleAddingProperty(outerBox, i) {
+    let td = helpermethods_1.createElement('td');
     td.addClass((i % 2 == 0) ? 'dark' : 'light');
     if (i <= 10) {
         outerBox.children().last().prepend(td);
@@ -442,17 +423,160 @@ function handleAddingProperty(i) {
     td.attr('id', "property-" + i);
     return td;
 }
+exports.handleAddingProperty = handleAddingProperty;
+function handleAddingProperties(outerBox) {
+    for (let i = 0; i < 40; i++) {
+        renderer_1.propertyCells.push(handleAddingProperty(outerBox, i));
+    }
+}
+exports.handleAddingProperties = handleAddingProperties;
+
+
+/***/ }),
+
+/***/ "./frontend/src/renderer/LeaderboardRenderer.ts":
+/*!******************************************************!*\
+  !*** ./frontend/src/renderer/LeaderboardRenderer.ts ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const jquery_1 = __importDefault(__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"));
+const TemplateEngine_1 = __importDefault(__webpack_require__(/*! ../jquery/TemplateEngine */ "./frontend/src/jquery/TemplateEngine.ts"));
+let leaderboard;
+let playerTemplate = TemplateEngine_1.default('html/players/leaderboard-row.html');
+class LeaderboardRenderer {
+    static generateLeaderBoard() {
+        return __awaiter(this, void 0, void 0, function* () {
+            leaderboard = yield createLeaderboard();
+            jquery_1.default("body").append(leaderboard);
+        });
+    }
+}
+exports.default = LeaderboardRenderer;
+function fadeInLeaderBoard(players) {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield (players.forEach((it) => __awaiter(this, void 0, void 0, function* () {
+            // addPlayerRow(it)
+        })));
+        let message = yield playerTemplate({ "playerColor": ' #030' });
+        leaderboard.append();
+        console.log(message);
+    });
+}
+exports.fadeInLeaderBoard = fadeInLeaderBoard;
+function createLeaderboard() {
+    return __awaiter(this, void 0, void 0, function* () {
+        let message = yield getLeaderBoard();
+        return jquery_1.default(message);
+    });
+}
+exports.createLeaderboard = createLeaderboard;
+function getLeaderBoard() {
+    return __awaiter(this, void 0, void 0, function* () {
+        return jquery_1.default.get('html/players/leaderboard.html');
+    });
+}
+
+
+/***/ }),
+
+/***/ "./frontend/src/renderer/MainRenderer.ts":
+/*!***********************************************!*\
+  !*** ./frontend/src/renderer/MainRenderer.ts ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const FieldPropertyRenderer_1 = __webpack_require__(/*! ./FieldPropertyRenderer */ "./frontend/src/renderer/FieldPropertyRenderer.ts");
+const LeaderboardRenderer_1 = __webpack_require__(/*! ./LeaderboardRenderer */ "./frontend/src/renderer/LeaderboardRenderer.ts");
+// let constants = require('../../constants.json');
+// console.log(propertyTemplate);
+class MainRenderer {
+    static init(state) {
+        FieldPropertyRenderer_1.fadeInRegularProperties(state.properties);
+        LeaderboardRenderer_1.fadeInLeaderBoard(state.players);
+    }
+}
+exports.default = MainRenderer;
+
+
+/***/ }),
+
+/***/ "./frontend/src/renderer/OutlineHandler.ts":
+/*!*************************************************!*\
+  !*** ./frontend/src/renderer/OutlineHandler.ts ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const jquery_1 = __importDefault(__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"));
+const constants_json_1 = __importDefault(__webpack_require__(/*! ../constants.json */ "./frontend/src/constants.json"));
+const FieldPropertyRenderer_1 = __webpack_require__(/*! ./FieldPropertyRenderer */ "./frontend/src/renderer/FieldPropertyRenderer.ts");
+const helpermethods_1 = __webpack_require__(/*! ../jquery/helpermethods */ "./frontend/src/jquery/helpermethods.ts");
+let outerSize = 0;
+let innerSize = 0;
+let smallSide = 0;
+let border = 0;
+let heightMargin = 0;
+let sideWidth = 0;
+let outerBox;
+// let properties: JQuery[] = [];
+function resize() {
+    outerBox.width(outerSize);
+    outerBox.height(outerSize);
+    outerBox.css('margin-top', heightMargin);
+    outerBox.css('border-width', `${border}px ${border}px`);
+    jquery_1.default(".sideline").width(innerSize);
+    jquery_1.default(".mainline").height(innerSize);
+    let valueFunction1 = ((outerSize - innerSize * 2) / 9);
+    jquery_1.default(".normalLine").height(valueFunction1);
+    let width = jquery_1.default("#leaderboard").width(sideWidth).width();
+}
 function getCenterCell() {
-    let htmlElements = createElement('td');
+    let htmlElements = helpermethods_1.createElement('td');
     htmlElements.attr('id', 'centerCell');
     htmlElements.attr('rowspan', 9);
     htmlElements.attr('colspan', 9);
     return htmlElements;
 }
 function createOuterBox() {
-    let outerBox = createElement('table');
+    let outerBox = helpermethods_1.createElement('table', 'outerbox');
     for (let i = 0; i < 11; i++) {
-        outerBox.append(createElement('tr'));
+        outerBox.append(helpermethods_1.createElement('tr'));
     }
     outerBox.children().first().addClass('mainline');
     outerBox.children().last().addClass('mainline');
@@ -464,31 +588,31 @@ function finishCreateOuterBox() {
     addColumnFormat(outerBox);
 }
 function addColumnFormat(outerBox) {
-    let leftSideLine = createElement('col');
+    let leftSideLine = helpermethods_1.createElement('col');
     leftSideLine.addClass('sideline');
     outerBox.prepend(leftSideLine);
-    let most = createElement('col');
+    let most = helpermethods_1.createElement('col');
     most.attr('span', 9);
     outerBox.prepend(most);
-    let rightSideLine = createElement('col');
+    let rightSideLine = helpermethods_1.createElement('col');
     rightSideLine.addClass('sideline');
     outerBox.prepend(rightSideLine);
 }
 function createBackground() {
-    let $body = jquery_1.default("body");
-    $body.css({ margin: 0, border: 0 });
-    outerBox = createOuterBox();
-    $body.append(outerBox);
-    handleProperties();
-    finishCreateOuterBox();
-    jquery_1.default.get('html/players/leaderboard.html', function (data) {
-        $body.append(data);
+    return __awaiter(this, void 0, void 0, function* () {
+        let $body = jquery_1.default("body");
+        $body.css({ margin: 0, border: 0 });
+        outerBox = createOuterBox();
+        $body.append(outerBox);
+        FieldPropertyRenderer_1.handleAddingProperties(outerBox);
+        finishCreateOuterBox();
     });
 }
 class OutlineHandler {
     static generateProperties() {
-        createBackground();
-        return properties;
+        return __awaiter(this, void 0, void 0, function* () {
+            yield createBackground();
+        });
     }
     static handleResize() {
         let height = jquery_1.default(window).height();
@@ -496,12 +620,13 @@ class OutlineHandler {
         if (!height || !width)
             return;
         let size = Math.min(height, width);
-        size -= 2;
+        // size -= 2;
         // border = size * constants['border'];
         outerSize = size; // - border * 2;
         innerSize = size * (constants_json_1.default["corner-ratio"]);
         smallSide = (outerSize - (innerSize * 2)) / 9;
         heightMargin = (height - size) / 2;
+        sideWidth = (width - outerSize) / 2;
         resize();
     }
 }
@@ -519,6 +644,15 @@ exports.default = OutlineHandler;
 
 "use strict";
 
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -528,23 +662,37 @@ const OutlineHandler_1 = __importDefault(__webpack_require__(/*! ./OutlineHandle
 const titleScreen_1 = __webpack_require__(/*! ../pagelogic/titleScreen */ "./frontend/src/pagelogic/titleScreen.ts");
 const MainRenderer_1 = __importDefault(__webpack_require__(/*! ./MainRenderer */ "./frontend/src/renderer/MainRenderer.ts"));
 const DebugHandler_1 = __importDefault(__webpack_require__(/*! ../Debug/DebugHandler */ "./frontend/src/Debug/DebugHandler.ts"));
+const LeaderboardRenderer_1 = __importDefault(__webpack_require__(/*! ./LeaderboardRenderer */ "./frontend/src/renderer/LeaderboardRenderer.ts"));
+exports.propertyCells = [];
 function create() {
-    exports.propertyCells = OutlineHandler_1.default.generateProperties();
+    return __awaiter(this, void 0, void 0, function* () {
+        yield OutlineHandler_1.default.generateProperties();
+        yield LeaderboardRenderer_1.default.generateLeaderBoard();
+    });
 }
 function resizer() {
     OutlineHandler_1.default.handleResize();
     jquery_1.default(window).on("resize", OutlineHandler_1.default.handleResize);
 }
+function createRenderer() {
+    return __awaiter(this, void 0, void 0, function* () {
+        let renderer = new Renderer();
+        yield renderer.init();
+        return renderer;
+    });
+}
+exports.createRenderer = createRenderer;
 class Renderer {
     constructor() {
-        this.init();
     }
     init() {
-        create();
-        resizer();
-        if (DebugHandler_1.default.enabled) {
-            MainRenderer_1.default.init(DebugHandler_1.default.getDebugState());
-        }
+        return __awaiter(this, void 0, void 0, function* () {
+            yield create();
+            resizer();
+            if (DebugHandler_1.default.enabled) {
+                MainRenderer_1.default.init(DebugHandler_1.default.getDebugState());
+            }
+        });
     }
     displayTitleScreen() {
         jquery_1.default('#centerCell').load('html/titleScreen.html', () => {

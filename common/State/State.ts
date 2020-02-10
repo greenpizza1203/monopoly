@@ -1,4 +1,4 @@
-import {Schema, MapSchema, type} from "@colyseus/schema";
+import {MapSchema, Schema, type} from "@colyseus/schema";
 import {Player} from "../Player";
 import {Dice} from "./Dice";
 import {getProperties} from "../../server/scripts/properties/PropertiesHandler";

@@ -1,1 +1,192 @@
-{"properties":[{"name":"Mediterranean Avenue","color":"#630","cost":60,"houseLevel":0,"location":1,"rentCost":[]},{"name":"Baltic Avenue","color":"#630","cost":60,"houseLevel":0,"location":3,"rentCost":[]},{"name":"Oriental Avenue","color":"#09C","cost":100,"houseLevel":0,"location":6,"rentCost":[]},{"name":"Vermont Avenue","color":"#09C","cost":100,"houseLevel":0,"location":8,"rentCost":[]},{"name":"Connecticut Avenue","color":"#09C","cost":120,"houseLevel":0,"location":9,"rentCost":[]},{"name":"St. Charles Place","color":"#C4C","cost":140,"houseLevel":0,"location":11,"rentCost":[]},{"name":"States Avenue","color":"#C4C","cost":140,"houseLevel":0,"location":13,"rentCost":[]},{"name":"Virginia Avenue","color":"#C4C","cost":160,"houseLevel":0,"location":14,"rentCost":[]},{"name":"St. James Place","color":"#F60","cost":180,"houseLevel":0,"location":16,"rentCost":[]},{"name":"Tennessee Avenue","color":"#F60","cost":180,"houseLevel":0,"location":18,"rentCost":[]},{"name":"New York Avenue","color":"#F60","cost":200,"houseLevel":0,"location":19,"rentCost":[]},{"name":"Kentucky Avenue","color":"#F00","cost":220,"houseLevel":0,"location":21,"rentCost":[]},{"name":"Indiana Avenue","color":"#F00","cost":220,"houseLevel":0,"location":23,"rentCost":[]},{"name":"Illinois Avenue","color":"#F00","cost":240,"houseLevel":0,"location":24,"rentCost":[]},{"name":"Atlantic Avenue","color":"#FF3","cost":260,"houseLevel":0,"location":26,"rentCost":[]},{"name":"Ventnor Avenue","color":"#FF3","cost":260,"houseLevel":0,"location":27,"rentCost":[]},{"name":"Marvin Gardens","color":"#FF3","cost":280,"houseLevel":0,"location":29,"rentCost":[]},{"name":"Pacific Avenue","color":"#393","cost":300,"houseLevel":0,"location":31,"rentCost":[]},{"name":"North Carolina Avenue","color":"#393","cost":300,"houseLevel":0,"location":32,"rentCost":[]},{"name":"Pennsylvania Avenue","color":"#393","cost":320,"houseLevel":0,"location":34,"rentCost":[]},{"name":"Park Place","color":"#006","cost":350,"houseLevel":0,"location":37,"rentCost":[]},{"name":"Boardwalk","color":"#006","cost":400,"houseLevel":0,"location":39,"rentCost":[]}]}
+{
+  "players": [
+    {
+      "color": "#300",
+      "name": "testa",
+      "money": "300"
+    },
+    {
+      "color": "#030",
+      "name": "testb",
+      "money": "1500"
+    }
+  ],
+  "properties": [
+    {
+      "name": "Mediterranean Avenue",
+      "color": "#630",
+      "cost": 60,
+      "houseLevel": 0,
+      "location": 1,
+      "rentCost": []
+    },
+    {
+      "name": "Baltic Avenue",
+      "color": "#630",
+      "cost": 60,
+      "houseLevel": 0,
+      "location": 3,
+      "rentCost": []
+    },
+    {
+      "name": "Oriental Avenue",
+      "color": "#09C",
+      "cost": 100,
+      "houseLevel": 0,
+      "location": 6,
+      "rentCost": []
+    },
+    {
+      "name": "Vermont Avenue",
+      "color": "#09C",
+      "cost": 100,
+      "houseLevel": 0,
+      "location": 8,
+      "rentCost": []
+    },
+    {
+      "name": "Connecticut Avenue",
+      "color": "#09C",
+      "cost": 120,
+      "houseLevel": 0,
+      "location": 9,
+      "rentCost": []
+    },
+    {
+      "name": "St. Charles Place",
+      "color": "#C4C",
+      "cost": 140,
+      "houseLevel": 0,
+      "location": 11,
+      "rentCost": []
+    },
+    {
+      "name": "States Avenue",
+      "color": "#C4C",
+      "cost": 140,
+      "houseLevel": 0,
+      "location": 13,
+      "rentCost": []
+    },
+    {
+      "name": "Virginia Avenue",
+      "color": "#C4C",
+      "cost": 160,
+      "houseLevel": 0,
+      "location": 14,
+      "rentCost": []
+    },
+    {
+      "name": "St. James Place",
+      "color": "#F60",
+      "cost": 180,
+      "houseLevel": 0,
+      "location": 16,
+      "rentCost": []
+    },
+    {
+      "name": "Tennessee Avenue",
+      "color": "#F60",
+      "cost": 180,
+      "houseLevel": 0,
+      "location": 18,
+      "rentCost": []
+    },
+    {
+      "name": "New York Avenue",
+      "color": "#F60",
+      "cost": 200,
+      "houseLevel": 0,
+      "location": 19,
+      "rentCost": []
+    },
+    {
+      "name": "Kentucky Avenue",
+      "color": "#F00",
+      "cost": 220,
+      "houseLevel": 0,
+      "location": 21,
+      "rentCost": []
+    },
+    {
+      "name": "Indiana Avenue",
+      "color": "#F00",
+      "cost": 220,
+      "houseLevel": 0,
+      "location": 23,
+      "rentCost": []
+    },
+    {
+      "name": "Illinois Avenue",
+      "color": "#F00",
+      "cost": 240,
+      "houseLevel": 0,
+      "location": 24,
+      "rentCost": []
+    },
+    {
+      "name": "Atlantic Avenue",
+      "color": "#FF3",
+      "cost": 260,
+      "houseLevel": 0,
+      "location": 26,
+      "rentCost": []
+    },
+    {
+      "name": "Ventnor Avenue",
+      "color": "#FF3",
+      "cost": 260,
+      "houseLevel": 0,
+      "location": 27,
+      "rentCost": []
+    },
+    {
+      "name": "Marvin Gardens",
+      "color": "#FF3",
+      "cost": 280,
+      "houseLevel": 0,
+      "location": 29,
+      "rentCost": []
+    },
+    {
+      "name": "Pacific Avenue",
+      "color": "#393",
+      "cost": 300,
+      "houseLevel": 0,
+      "location": 31,
+      "rentCost": []
+    },
+    {
+      "name": "North Carolina Avenue",
+      "color": "#393",
+      "cost": 300,
+      "houseLevel": 0,
+      "location": 32,
+      "rentCost": []
+    },
+    {
+      "name": "Pennsylvania Avenue",
+      "color": "#393",
+      "cost": 320,
+      "houseLevel": 0,
+      "location": 34,
+      "rentCost": []
+    },
+    {
+      "name": "Park Place",
+      "color": "#006",
+      "cost": 350,
+      "houseLevel": 0,
+      "location": 37,
+      "rentCost": []
+    },
+    {
+      "name": "Boardwalk",
+      "color": "#006",
+      "cost": 400,
+      "houseLevel": 0,
+      "location": 39,
+      "rentCost": []
+    }
+  ]
+}

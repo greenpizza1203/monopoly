@@ -3,10 +3,9 @@ import express from "express";
 import cors from "cors";
 import {Server} from "colyseus";
 import {monitor} from "@colyseus/monitor";
-// import socialRoutes from "@colyseus/social/express"
-
 import {GameRoom} from "./GameRoom";
 import Preinit from "./Preinit";
+// import socialRoutes from "@colyseus/social/express"
 
 asyncRun().then();
 

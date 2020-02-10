@@ -1,12 +1,12 @@
 const $ = require('jquery');
-import Renderer from './renderer/renderer'
+import {createRenderer} from './renderer/renderer'
 import colyhandler from './colyhandler/colyhandler'
 
-let renderBoy = new Renderer();
-init();
+init().then();
 
-function init() {
-    colyhandler.init()
+async function init() {
+    let renderBoy = await createRenderer();
+    colyhandler.init();
     renderBoy.displayTitleScreen();
 }
 

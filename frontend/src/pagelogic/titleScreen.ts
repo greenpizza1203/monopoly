@@ -1,5 +1,6 @@
 import Cookies from "js-cookie"
 import $ from "jquery";
+
 export function saveUsername(username: string) {
     Cookies.set('username', username);
     console.log(username);

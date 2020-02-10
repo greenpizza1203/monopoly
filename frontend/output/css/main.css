@@ -2,18 +2,20 @@
 body, html {
     /*overflow:hidden;*/
     background: black;
-
-}
-.outer-box {
-    position: relative;
-    /*outline: 5px solid #000000;*/
-    /*outline-offset: -5px;*/
-    border: solid #000;
-    margin: 0 auto;
+    overflow: hidden;
 
 }
 
-#centerCell{
+/*.outer-box {*/
+/*    position: relative;*/
+/*    !*outline: 5px solid #000000;*!*/
+/*    !*outline-offset: -5px;*!*/
+/*    border: solid #000;*/
+/*    margin: 0 auto;*/
+
+/*}*/
+
+#centerCell {
     background: white;
 
 }

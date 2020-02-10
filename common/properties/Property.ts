@@ -1,4 +1,5 @@
 import {ArraySchema, Schema, type} from "@colyseus/schema"
+
 const locationArray = ["bottom", "left", "top", "right"];
 export class Property extends Schema {
     @type("string") name: string;

@@ -1,7 +1,7 @@
 import $ from 'jquery'
 
 const jsr = require('jsrender')();
-console.log(jsr);
+// console.log(jsr);
 let files: any = {};
 
 async function promisify(fileUrl: string) {

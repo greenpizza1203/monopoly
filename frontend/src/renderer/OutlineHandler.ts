@@ -1,13 +1,17 @@
 import $ from "jquery";
 import constants from "../constants.json";
+import {handleAddingProperties} from "./FieldPropertyRenderer";
+import {createElement} from "../jquery/helpermethods";
 
 let outerSize = 0;
 let innerSize = 0;
 let smallSide = 0;
 let border = 0;
 let heightMargin = 0;
+let sideWidth = 0;
 let outerBox: JQuery;
-let properties: JQuery[] = [];
+
+// let properties: JQuery[] = [];
 
 function resize() {
     outerBox.width(outerSize);
@@ -19,45 +23,10 @@ function resize() {
     $(".mainline").height(innerSize);
     let valueFunction1 = ((outerSize - innerSize * 2) / 9);
     $(".normalLine").height(valueFunction1);
-    // $(".vertical").each(function( index ) {
-    //     let htmlElements = $( this );
-    //     let message = htmlElements.parent().height();
-    //     htmlElements.height(message-1);
-    //     console.log( message );
-    // });
+    let width = $("#leaderboard").width(sideWidth).width();
 
 }
 
-function createElement(tagName: string
-): JQuery {
-    return $(document.createElement(tagName))
-}
-
-function handleProperties() {
-
-    for (let i = 0; i < 40; i++) {
-        properties.push(handleAddingProperty(i));
-    }
-}
-
-
-function handleAddingProperty(i: number) {
-
-    let td = createElement('td');
-    td.addClass((i % 2 == 0) ? 'dark' : 'light');
-    if (i <= 10) {
-        outerBox.children().last().prepend(td)
-    } else if (i <= 19) {
-        outerBox.children().eq(20 - i).prepend(td)
-    } else if (i <= 30) {
-        outerBox.children().first().append(td)
-    } else {
-        outerBox.children().eq(40 - i).append(td)
-    }
-    td.addClass('property');
-    td.attr('id', "property-" + i);
-    return td;
-}
 
 function getCenterCell(): JQuery {
     let htmlElements = createElement('td');
@@ -68,7 +37,7 @@ function getCenterCell(): JQuery {
 }
 
 function createOuterBox() {
-    let outerBox = createElement('table');
+    let outerBox = createElement('table', 'outerbox');
 
     for (let i = 0; i < 11; i++) {
         outerBox.append(createElement('tr'))
@@ -98,25 +67,23 @@ function addColumnFormat(outerBox: JQuery<HTMLElement>) {
     outerBox.prepend(rightSideLine);
 }
 
-function createBackground() {
+async function createBackground() {
     let $body = $("body");
     $body.css({margin: 0, border: 0});
     outerBox = createOuterBox();
     $body.append(outerBox);
-    handleProperties();
+    handleAddingProperties(outerBox);
     finishCreateOuterBox();
-    $.get('html/players/leaderboard.html', function(data){
-        $body.append(data)
-    });
+
 
 }
 
 export default class OutlineHandler {
 
 
-    static generateProperties() {
-        createBackground();
-        return properties;
+    static async generateProperties() {
+        await createBackground();
+
     }
 
     static handleResize() {
@@ -125,12 +92,14 @@ export default class OutlineHandler {
         let width = $(window).width();
         if (!height || !width) return;
         let size = Math.min(height, width);
-        size -= 2;
+        // size -= 2;
         // border = size * constants['border'];
         outerSize = size; // - border * 2;
         innerSize = size * (constants["corner-ratio"]);
         smallSide = (outerSize - (innerSize * 2)) / 9;
         heightMargin = (height - size) / 2;
+        sideWidth = (width - outerSize) / 2;
+
         resize()
     }
 }
