@@ -1,5 +1,9 @@
 
+body, html {
+    /*overflow:hidden;*/
+    background: black;
 
+}
 .outer-box {
     position: relative;
     /*outline: 5px solid #000000;*/
@@ -9,8 +13,9 @@
 
 }
 
-.corner-box {
-    position: absolute;
+#centerCell{
+    background: white;
+
 }
 
 .property {

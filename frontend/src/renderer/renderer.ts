@@ -5,11 +5,12 @@ import {State} from "../../../common/State/State";
 import OutlineHandler from "./OutlineHandler";
 import {handleTitleScreen} from "../pagelogic/titleScreen";
 import MainRenderer from "./MainRenderer";
+import DebugHandler from "../Debug/DebugHandler";
 
 export let propertyCells: JQuery[];
 
 function create() {
-   propertyCells =  OutlineHandler.generateProperties();
+    propertyCells = OutlineHandler.generateProperties();
 }
 
 
@@ -29,7 +30,9 @@ export default class Renderer {
     init() {
         create();
         resizer();
-
+        if (DebugHandler.enabled) {
+            MainRenderer.init(DebugHandler.getDebugState())
+        }
     }
 
 
@@ -45,7 +48,6 @@ export default class Renderer {
     }
 
     static mainScreen(room: Room<State>) {
-        console.log('adding');
         room.onStateChange.once((state) => {
             MainRenderer.init(state)
         });

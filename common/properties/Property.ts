@@ -1,5 +1,5 @@
-import {Schema, type, ArraySchema} from "@colyseus/schema"
-
+import {ArraySchema, Schema, type} from "@colyseus/schema"
+const locationArray = ["bottom", "left", "top", "right"];
 export class Property extends Schema {
     @type("string") name: string;
     @type("string") color: string;
@@ -25,5 +25,10 @@ export class Property extends Schema {
         for (let i = 0; i < amount; i++) {
             this.rentCost.push(options[`level_${i}`]);
         }
+    }
+
+
+    getSide() {
+        return locationArray[Math.floor(this.location / 10)]
     }
 }

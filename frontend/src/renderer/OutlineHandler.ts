@@ -17,6 +17,14 @@ function resize() {
     outerBox.css('border-width', `${border}px ${border}px`);
     $(".sideline").width(innerSize);
     $(".mainline").height(innerSize);
+    let valueFunction1 = ((outerSize - innerSize * 2) / 9);
+    $(".normalLine").height(valueFunction1);
+    // $(".vertical").each(function( index ) {
+    //     let htmlElements = $( this );
+    //     let message = htmlElements.parent().height();
+    //     htmlElements.height(message-1);
+    //     console.log( message );
+    // });
 
 }
 
@@ -42,7 +50,7 @@ function handleAddingProperty(i: number) {
     } else if (i <= 19) {
         outerBox.children().eq(20 - i).prepend(td)
     } else if (i <= 30) {
-        outerBox.children().first().prepend(td)
+        outerBox.children().first().append(td)
     } else {
         outerBox.children().eq(40 - i).append(td)
     }
@@ -67,6 +75,7 @@ function createOuterBox() {
     }
     outerBox.children().first().addClass('mainline');
     outerBox.children().last().addClass('mainline');
+    outerBox.children().not(".mainline").addClass('normalLine');
     outerBox.children().eq(1).append(getCenterCell());
     return outerBox;
 }
@@ -95,14 +104,18 @@ function createBackground() {
     outerBox = createOuterBox();
     $body.append(outerBox);
     handleProperties();
-    finishCreateOuterBox()
+    finishCreateOuterBox();
+    $.get('html/players/leaderboard.html', function(data){
+        $body.append(data)
+    });
+
 }
 
 export default class OutlineHandler {
 
 
     static generateProperties() {
-        createBackground()
+        createBackground();
         return properties;
     }
 
@@ -111,7 +124,8 @@ export default class OutlineHandler {
         let height = $(window).height();
         let width = $(window).width();
         if (!height || !width) return;
-        const size = Math.min(height, width);
+        let size = Math.min(height, width);
+        size -= 2;
         // border = size * constants['border'];
         outerSize = size; // - border * 2;
         innerSize = size * (constants["corner-ratio"]);

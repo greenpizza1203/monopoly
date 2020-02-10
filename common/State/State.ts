@@ -1,7 +1,7 @@
 import {Schema, MapSchema, type} from "@colyseus/schema";
 import {Player} from "../Player";
 import {Dice} from "./Dice";
-import {getProperties} from "../properties/PropertiesHandler";
+import {getProperties} from "../../server/scripts/properties/PropertiesHandler";
 import {Property} from "../properties/Property";
 
 

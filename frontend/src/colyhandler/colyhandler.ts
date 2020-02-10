@@ -3,6 +3,7 @@ import {Client, Room} from "colyseus.js";
 import renderer from "../renderer/renderer";
 import {State} from "../../../common/State/State";
 import {saveUsername} from "../pagelogic/titleScreen";
+import MainRenderer from "../renderer/MainRenderer";
 
 let client: Client;
 let room: Room<State>;
@@ -23,11 +24,7 @@ let username: string | number | string[] | undefined = "";
         let $join = $('.join-button');
         const originalText = $join.text();
         $join.attr('disabled', 'true');
-
-        // $join.text('Joining');
         try {
-            // console.log('joining');
-
             room = await roomPromise;
             // console.log('joined');
 

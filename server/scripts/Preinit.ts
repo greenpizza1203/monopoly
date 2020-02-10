@@ -1,4 +1,4 @@
-import {PropertiesHandler} from "../../common/properties/PropertiesHandler";
+import {PropertiesHandler} from "./properties/PropertiesHandler";
 
 export default class Preinit {
 

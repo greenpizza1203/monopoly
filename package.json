@@ -4,10 +4,11 @@
   "description": "npm init template for bootstraping an empty Colyseus project",
   "main": "lib/index.js",
   "scripts": {
-    "server": "ts-node server/scripts/index.ts",
+    "server": "ts-node server/scripts/index.ts ",
     "loadtest": "server/node_modules/.bin/colyseus-loadtest loadtest/example.ts --room my_room --numClients 2",
     "webpack": "npx webpack --config frontend/webpack.config.js",
-    "watch": "webpack --watch --config frontend/webpack.config.js"
+    "watch": "webpack --watch --config frontend/webpack.config.js",
+    "createDebug": "ts-node server/tests/createDebug.ts"
   },
   "author": "",
   "license": "UNLICENSED",
@@ -19,6 +20,7 @@
     "@colyseus/loadtest": "^0.12.0",
     "@types/cors": "^2.8.6",
     "@types/express": "^4.17.1",
+    "@types/fs-extra": "^8.0.1",
     "@types/jquery": "latest",
     "@types/js-cookie": "^2.2.4",
     "@types/papaparse": "^5.0.3",
@@ -35,8 +37,12 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-jwt": "^5.3.1",
+    "fs-extra": "latest",
+    "fse": "latest",
     "jquery": "^3.4.1",
+    "jquery.loadtemplate": "^1.5.10",
     "js-cookie": "^2.2.1",
+    "jsrender": "^1.0.5",
     "papaparse": "latest",
     "random": "latest",
     "ts-loader": "^6.2.1"

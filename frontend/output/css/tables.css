@@ -2,13 +2,20 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     margin: 0 auto;
+    table-layout: fixed;
+}
+
+tr {
+    padding: 0;
+    /*height: auto;*/
 }
 
 td {
-    border: solid #000000;
-    border-width: 3px;
+
+    /*border: solid #000000;*/
+    /*border-width: 0px;*/
     text-align: center;
-    padding: 8px;
+    padding: 0;
 }
 
 td.light {
