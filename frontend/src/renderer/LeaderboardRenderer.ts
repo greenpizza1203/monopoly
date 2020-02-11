@@ -1,10 +1,10 @@
 import $ from "jquery";
 import {Player} from "../../../common/Player";
 import {MapSchema} from "@colyseus/schema"
-import template from "../jquery/TemplateEngine"
-
+import LeaderboardRowHandler from "./leaderboard/LeaderboardRowHandler"
 let leaderboard: JQuery;
-let playerTemplate = template('html/players/leaderboard-row.html');
+let rows:LeaderboardRowHandler[] = []
+
 export default class LeaderboardRenderer {
     static async generateLeaderBoard() {
         leaderboard = await getLeaderBoard();
@@ -14,16 +14,16 @@ export default class LeaderboardRenderer {
 
 export async function fadeInLeaderBoard(players: MapSchema<Player>) {
     for (const id in players) {
-        await addPlayer(players[id]);
+        let row = new LeaderboardRowHandler(players[id])
+        leaderboard.append(await row.createElement());
+        rows.push(row);
     }
 
 }
 
-async function addPlayer(player: any) {
-    let contents: any = await playerTemplate({});
-    leaderboard.append(contents);
-    console.log(player)
-}
+// async function addPlayer(player: any) {
+//     console.log(player)
+// }
 
 async function getLeaderBoard() {
     return $(await $.get('html/players/leaderboard.html'));
