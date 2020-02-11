@@ -135,64 +135,27 @@ DebugHandler.enabled = true;
 
 "use strict";
 
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const jquery_1 = __importDefault(__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"));
 const colyseus_js_1 = __webpack_require__(/*! colyseus.js */ "./node_modules/colyseus.js/lib/index.js");
-const renderer_1 = __importDefault(__webpack_require__(/*! ../renderer/renderer */ "./frontend/src/renderer/renderer.ts"));
-const titleScreen_1 = __webpack_require__(/*! ../pagelogic/titleScreen */ "./frontend/src/pagelogic/titleScreen.ts");
+const Renderer_1 = __webpack_require__(/*! ../renderer/Renderer */ "./frontend/src/renderer/Renderer.ts");
 let client;
-let room;
 let username = "";
-window.colyhandler = {
-    onPlayClicked: function () {
-        client = new colyseus_js_1.Client("ws://localhost:2567");
-        username = jquery_1.default('#username').val();
-        if (typeof username !== "string") {
-            console.error('no username');
-            return;
-        }
-        titleScreen_1.saveUsername(username);
-        renderer_1.default.displayJoinScreen();
-    },
-    onPublicJoinClicked: function () {
-        return __awaiter(this, void 0, void 0, function* () {
-            let roomPromise = client.joinOrCreate("monopoly_room", { username: username });
-            let $join = jquery_1.default('.join-button');
-            const originalText = $join.text();
-            $join.attr('disabled', 'true');
-            try {
-                room = yield roomPromise;
-                // console.log('joined');
-                renderer_1.default.mainScreen(room);
-            }
-            catch (e) {
-                $join.removeAttr('disabled');
-                $join.text(originalText);
-                throw e;
-            }
-        });
-    }
-};
 class colyhandler {
     static init() {
+        client = new colyseus_js_1.Client("ws://localhost:2567");
         // console.log(client);
         // client.joinOrCreate("battle", {/* options */}).then(room => {
         //     console.log("joined successfully", room);
         // }).catch(e => {
         //     console.error("join error", e);
         // });
+    }
+    static join() {
+        return client.joinOrCreate("monopoly_room", { username: username });
+    }
+    static joined(joinedRoom) {
+        exports.room = joinedRoom;
+        Renderer_1.renderInstance.mainScreen();
     }
 }
 exports.default = colyhandler;
@@ -208,6 +171,33 @@ exports.default = colyhandler;
 /***/ (function(module) {
 
 module.exports = JSON.parse("{\"corner-ratio\":0.135,\"border\":0,\"imageList\":{\"0\":\"collect_200\",\"10\":\"in_jail\",\"20\":\"free_parking\",\"30\":\"go_to_jail\"}}");
+
+/***/ }),
+
+/***/ "./frontend/src/cookiehandler/CookieHandler.ts":
+/*!*****************************************************!*\
+  !*** ./frontend/src/cookiehandler/CookieHandler.ts ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const js_cookie_1 = __importDefault(__webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/src/js.cookie.js"));
+function getUsername() {
+    return js_cookie_1.default.get("username");
+}
+exports.getUsername = getUsername;
+function saveUsername(username) {
+    js_cookie_1.default.set('username', username);
+    console.log(username);
+}
+exports.saveUsername = saveUsername;
+
 
 /***/ }),
 
@@ -234,16 +224,32 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-const renderer_1 = __webpack_require__(/*! ./renderer/renderer */ "./frontend/src/renderer/renderer.ts");
+const Renderer_1 = __webpack_require__(/*! ./renderer/Renderer */ "./frontend/src/renderer/Renderer.ts");
 const colyhandler_1 = __importDefault(__webpack_require__(/*! ./colyhandler/colyhandler */ "./frontend/src/colyhandler/colyhandler.ts"));
 init().then();
 function init() {
     return __awaiter(this, void 0, void 0, function* () {
-        let renderBoy = yield renderer_1.createRenderer();
+        yield Renderer_1.createRenderer();
         colyhandler_1.default.init();
-        renderBoy.displayTitleScreen();
+        Renderer_1.renderInstance.displayTitleScreen();
     });
 }
+
+
+/***/ }),
+
+/***/ "./frontend/src/inputhandler/buttonHandler.ts":
+/*!****************************************************!*\
+  !*** ./frontend/src/inputhandler/buttonHandler.ts ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+let buttonHandler = window.colyhandler = {};
+exports.default = buttonHandler;
 
 
 /***/ }),
@@ -311,6 +317,15 @@ exports.default = default_1;
 
 "use strict";
 
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -324,6 +339,12 @@ function createElement(tagName, id = "") {
     return htmlElements;
 }
 exports.createElement = createElement;
+function $load(url) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return jquery_1.default(yield jquery_1.default.ajax(url));
+    });
+}
+exports.$load = $load;
 
 
 /***/ }),
@@ -341,19 +362,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const js_cookie_1 = __importDefault(__webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/src/js.cookie.js"));
 const jquery_1 = __importDefault(__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"));
-function saveUsername(username) {
-    js_cookie_1.default.set('username', username);
-    console.log(username);
-}
-exports.saveUsername = saveUsername;
+const Renderer_1 = __importDefault(__webpack_require__(/*! ../renderer/Renderer */ "./frontend/src/renderer/Renderer.ts"));
+const buttonHandler_1 = __importDefault(__webpack_require__(/*! ../inputhandler/buttonHandler */ "./frontend/src/inputhandler/buttonHandler.ts"));
+const CookieHandler_1 = __webpack_require__(/*! ../cookiehandler/CookieHandler */ "./frontend/src/cookiehandler/CookieHandler.ts");
+(buttonHandler_1.default["onPlayClicked"]) = function () {
+    let maybeusername = jquery_1.default('#username').val();
+    if (typeof maybeusername !== "string") {
+        console.error('no username');
+        return;
+    }
+    CookieHandler_1.saveUsername(maybeusername);
+    Renderer_1.default.displayJoinScreen();
+};
 function handleTitleScreen() {
-    let oldUsername = js_cookie_1.default.get("username");
+    let oldUsername = CookieHandler_1.getUsername();
     if (!oldUsername)
         return;
-    console.log(oldUsername);
-    // console.log()
+    // console.log(oldUsername);
     jquery_1.default('#username').attr('value', oldUsername);
 }
 exports.handleTitleScreen = handleTitleScreen;
@@ -383,7 +409,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const renderer_1 = __webpack_require__(/*! ./renderer */ "./frontend/src/renderer/renderer.ts");
+const Renderer_1 = __webpack_require__(/*! ./Renderer */ "./frontend/src/renderer/Renderer.ts");
 const TemplateEngine_1 = __importDefault(__webpack_require__(/*! ../jquery/TemplateEngine */ "./frontend/src/jquery/TemplateEngine.ts"));
 const helpermethods_1 = __webpack_require__(/*! ../jquery/helpermethods */ "./frontend/src/jquery/helpermethods.ts");
 var propTemplates = {
@@ -393,15 +419,16 @@ var propTemplates = {
     top: TemplateEngine_1.default('html/properties/top_property.html')
 };
 function fadeInRegularProperties(properties) {
-    properties.forEach((prop) => __awaiter(this, void 0, void 0, function* () {
-        let location = prop.location;
-        let side = prop.getSide();
-        let htmlStringFunction = yield propTemplates[side]({
-            color: prop.color,
-        });
-        // console.log(propertyCells)
-        renderer_1.propertyCells[location].html(htmlStringFunction);
-    }));
+    return __awaiter(this, void 0, void 0, function* () {
+        for (const prop of properties) {
+            let location = prop.location;
+            let side = prop.getSide();
+            let htmlStringFunction = yield propTemplates[side]({
+                color: prop.color,
+            });
+            Renderer_1.propertyCells[location].html(htmlStringFunction);
+        }
+    });
 }
 exports.fadeInRegularProperties = fadeInRegularProperties;
 function handleAddingProperty(outerBox, i) {
@@ -426,7 +453,7 @@ function handleAddingProperty(outerBox, i) {
 exports.handleAddingProperty = handleAddingProperty;
 function handleAddingProperties(outerBox) {
     for (let i = 0; i < 40; i++) {
-        renderer_1.propertyCells.push(handleAddingProperty(outerBox, i));
+        Renderer_1.propertyCells.push(handleAddingProperty(outerBox, i));
     }
 }
 exports.handleAddingProperties = handleAddingProperties;
@@ -463,7 +490,7 @@ let playerTemplate = TemplateEngine_1.default('html/players/leaderboard-row.html
 class LeaderboardRenderer {
     static generateLeaderBoard() {
         return __awaiter(this, void 0, void 0, function* () {
-            leaderboard = yield createLeaderboard();
+            leaderboard = yield getLeaderBoard();
             jquery_1.default("body").append(leaderboard);
         });
     }
@@ -471,25 +498,22 @@ class LeaderboardRenderer {
 exports.default = LeaderboardRenderer;
 function fadeInLeaderBoard(players) {
     return __awaiter(this, void 0, void 0, function* () {
-        yield (players.forEach((it) => __awaiter(this, void 0, void 0, function* () {
-            // addPlayerRow(it)
-        })));
-        let message = yield playerTemplate({ "playerColor": ' #030' });
-        leaderboard.append();
-        console.log(message);
+        for (const id in players) {
+            yield addPlayer(players[id]);
+        }
     });
 }
 exports.fadeInLeaderBoard = fadeInLeaderBoard;
-function createLeaderboard() {
+function addPlayer(player) {
     return __awaiter(this, void 0, void 0, function* () {
-        let message = yield getLeaderBoard();
-        return jquery_1.default(message);
+        let contents = yield playerTemplate({});
+        leaderboard.append(contents);
+        console.log(player);
     });
 }
-exports.createLeaderboard = createLeaderboard;
 function getLeaderBoard() {
     return __awaiter(this, void 0, void 0, function* () {
-        return jquery_1.default.get('html/players/leaderboard.html');
+        return jquery_1.default(yield jquery_1.default.get('html/players/leaderboard.html'));
     });
 }
 
@@ -505,6 +529,15 @@ function getLeaderBoard() {
 
 "use strict";
 
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const FieldPropertyRenderer_1 = __webpack_require__(/*! ./FieldPropertyRenderer */ "./frontend/src/renderer/FieldPropertyRenderer.ts");
 const LeaderboardRenderer_1 = __webpack_require__(/*! ./LeaderboardRenderer */ "./frontend/src/renderer/LeaderboardRenderer.ts");
@@ -512,8 +545,10 @@ const LeaderboardRenderer_1 = __webpack_require__(/*! ./LeaderboardRenderer */ "
 // console.log(propertyTemplate);
 class MainRenderer {
     static init(state) {
-        FieldPropertyRenderer_1.fadeInRegularProperties(state.properties);
-        LeaderboardRenderer_1.fadeInLeaderBoard(state.players);
+        return __awaiter(this, void 0, void 0, function* () {
+            yield FieldPropertyRenderer_1.fadeInRegularProperties(state.properties);
+            yield LeaderboardRenderer_1.fadeInLeaderBoard(state.players);
+        });
     }
 }
 exports.default = MainRenderer;
@@ -574,15 +609,17 @@ function getCenterCell() {
     return htmlElements;
 }
 function createOuterBox() {
-    let outerBox = helpermethods_1.createElement('table', 'outerbox');
-    for (let i = 0; i < 11; i++) {
-        outerBox.append(helpermethods_1.createElement('tr'));
-    }
-    outerBox.children().first().addClass('mainline');
-    outerBox.children().last().addClass('mainline');
-    outerBox.children().not(".mainline").addClass('normalLine');
-    outerBox.children().eq(1).append(getCenterCell());
-    return outerBox;
+    return __awaiter(this, void 0, void 0, function* () {
+        let outerBox = jquery_1.default(yield jquery_1.default.ajax("html/mainTable/mainTable.html"));
+        for (let i = 0; i < 11; i++) {
+            outerBox.append(helpermethods_1.createElement('tr'));
+        }
+        outerBox.children().first().addClass('mainline');
+        outerBox.children().last().addClass('mainline');
+        outerBox.children().not(".mainline").addClass('normalLine');
+        outerBox.children().eq(1).append(getCenterCell());
+        return outerBox;
+    });
 }
 function finishCreateOuterBox() {
     addColumnFormat(outerBox);
@@ -602,7 +639,7 @@ function createBackground() {
     return __awaiter(this, void 0, void 0, function* () {
         let $body = jquery_1.default("body");
         $body.css({ margin: 0, border: 0 });
-        outerBox = createOuterBox();
+        outerBox = yield createOuterBox();
         $body.append(outerBox);
         FieldPropertyRenderer_1.handleAddingProperties(outerBox);
         finishCreateOuterBox();
@@ -635,9 +672,9 @@ exports.default = OutlineHandler;
 
 /***/ }),
 
-/***/ "./frontend/src/renderer/renderer.ts":
+/***/ "./frontend/src/renderer/Renderer.ts":
 /*!*******************************************!*\
-  !*** ./frontend/src/renderer/renderer.ts ***!
+  !*** ./frontend/src/renderer/Renderer.ts ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -663,6 +700,7 @@ const titleScreen_1 = __webpack_require__(/*! ../pagelogic/titleScreen */ "./fro
 const MainRenderer_1 = __importDefault(__webpack_require__(/*! ./MainRenderer */ "./frontend/src/renderer/MainRenderer.ts"));
 const DebugHandler_1 = __importDefault(__webpack_require__(/*! ../Debug/DebugHandler */ "./frontend/src/Debug/DebugHandler.ts"));
 const LeaderboardRenderer_1 = __importDefault(__webpack_require__(/*! ./LeaderboardRenderer */ "./frontend/src/renderer/LeaderboardRenderer.ts"));
+const colyhandler_1 = __webpack_require__(/*! ../colyhandler/colyhandler */ "./frontend/src/colyhandler/colyhandler.ts");
 exports.propertyCells = [];
 function create() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -676,9 +714,8 @@ function resizer() {
 }
 function createRenderer() {
     return __awaiter(this, void 0, void 0, function* () {
-        let renderer = new Renderer();
-        yield renderer.init();
-        return renderer;
+        exports.renderInstance = new Renderer();
+        yield exports.renderInstance.init();
     });
 }
 exports.createRenderer = createRenderer;
@@ -702,10 +739,13 @@ class Renderer {
     static displayJoinScreen() {
         jquery_1.default('#centerCell').load('html/joinScreen.html');
     }
-    static mainScreen(room) {
-        room.onStateChange.once((state) => {
-            MainRenderer_1.default.init(state);
-        });
+    mainScreen() {
+        colyhandler_1.room.onStateChange.once((state) => __awaiter(this, void 0, void 0, function* () {
+            yield MainRenderer_1.default.init(state);
+            colyhandler_1.room.onStateChange(Renderer.handleStateChange);
+        }));
+    }
+    static handleStateChange(state) {
     }
 }
 exports.default = Renderer;

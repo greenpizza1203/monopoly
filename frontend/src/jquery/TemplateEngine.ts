@@ -12,7 +12,7 @@ async function promisify(fileUrl: string) {
 
 }
 
-export default function (fileUrl: string) {
+export default function (fileUrl: string): (data: any) => Promise<unknown> {
     if (!files[fileUrl]) files[fileUrl] = promisify(fileUrl);
 
     return function (data: any) {

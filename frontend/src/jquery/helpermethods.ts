@@ -9,3 +9,7 @@ export function createElement(tagName: string, id = ""
     }
     return htmlElements;
 }
+
+export async function $load(url: string) {
+    return $(await $.ajax(url));
+}

@@ -1,7 +1,7 @@
 import {State} from "../../../common/State/State";
 import {Property} from "../../../common/properties/Property";
 import {ArraySchema} from "@colyseus/schema"
-import {propertyCells} from "./renderer";
+import {propertyCells} from "./Renderer";
 import template from '../jquery/TemplateEngine'
 import {fadeInRegularProperties} from "./FieldPropertyRenderer";
 import {fadeInLeaderBoard} from "./LeaderboardRenderer";
@@ -13,8 +13,8 @@ import {fadeInLeaderBoard} from "./LeaderboardRenderer";
 
 
 export default class MainRenderer {
-    static init(state: State) {
-        fadeInRegularProperties(state.properties)
-        fadeInLeaderBoard(state.players)
+    static async init(state: State) {
+        await fadeInRegularProperties(state.properties);
+        await fadeInLeaderBoard(state.players)
     }
 }

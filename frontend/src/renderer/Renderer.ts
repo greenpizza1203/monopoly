@@ -6,8 +6,11 @@ import {handleTitleScreen} from "../pagelogic/titleScreen";
 import MainRenderer from "./MainRenderer";
 import DebugHandler from "../Debug/DebugHandler";
 import LeaderboardRenderer from "./LeaderboardRenderer";
+import {room} from "../colyhandler/colyhandler";
 
 export let propertyCells: JQuery[] = [];
+
+export let renderInstance: Renderer;
 
 async function create() {
     await OutlineHandler.generateProperties();
@@ -22,10 +25,9 @@ function resizer() {
 
 }
 
-export async function createRenderer(): Promise<Renderer> {
-    let renderer = new Renderer();
-    await renderer.init();
-    return renderer;
+export async function createRenderer() {
+    renderInstance = new Renderer();
+    await renderInstance.init();
 }
 
 export default class Renderer {
@@ -54,10 +56,14 @@ export default class Renderer {
         $('#centerCell').load('html/joinScreen.html')
     }
 
-    static mainScreen(room: Room<State>) {
-        room.onStateChange.once((state) => {
-            MainRenderer.init(state)
+    mainScreen() {
+        room.onStateChange.once(async (state) => {
+            await MainRenderer.init(state);
+            room.onStateChange(Renderer.handleStateChange)
         });
+    }
+
+    static handleStateChange(state: State) {
 
     }
 }

@@ -1,6 +1,6 @@
 import {ArraySchema} from "@colyseus/schema";
 import {Property} from "../../../common/properties/Property";
-import {propertyCells} from "./renderer";
+import {propertyCells} from "./Renderer";
 import template from "../jquery/TemplateEngine";
 import {createElement} from "../jquery/helpermethods";
 
@@ -11,17 +11,15 @@ var propTemplates: any = {
     top: template('html/properties/top_property.html')
 };
 
-export function fadeInRegularProperties(properties: ArraySchema<Property>) {
-    properties.forEach(async prop => {
+export async function fadeInRegularProperties(properties: ArraySchema<Property>) {
+    for (const prop of properties) {
         let location = prop.location;
-
         let side = prop.getSide();
         let htmlStringFunction = await propTemplates[side]({
             color: prop.color,
         });
-        // console.log(propertyCells)
-        propertyCells[location].html(htmlStringFunction)
-    })
+        propertyCells[location].html(htmlStringFunction);
+    }
 }
 
 export function handleAddingProperty(outerBox: JQuery, i: number) {

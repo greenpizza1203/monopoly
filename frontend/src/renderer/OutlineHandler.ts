@@ -36,9 +36,8 @@ function getCenterCell(): JQuery {
     return htmlElements
 }
 
-function createOuterBox() {
-    let outerBox = createElement('table', 'outerbox');
-
+async function createOuterBox(): Promise<JQuery> {
+    let outerBox: any =  $(await $.ajax("html/mainTable/mainTable.html"));
     for (let i = 0; i < 11; i++) {
         outerBox.append(createElement('tr'))
     }
@@ -70,7 +69,7 @@ function addColumnFormat(outerBox: JQuery<HTMLElement>) {
 async function createBackground() {
     let $body = $("body");
     $body.css({margin: 0, border: 0});
-    outerBox = createOuterBox();
+    outerBox = await createOuterBox();
     $body.append(outerBox);
     handleAddingProperties(outerBox);
     finishCreateOuterBox();
