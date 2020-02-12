@@ -1,7 +1,5 @@
 import buttonHandler from "../inputhandler/buttonHandler";
-import {State} from "../../../common/State/State";
 import colyhandler from "../colyhandler/colyhandler";
-import {renderInstance} from "../renderer/Renderer";
 
 buttonHandler["onPublicJoinClicked"] = async function () {
     let roomPromise = colyhandler.join();
@@ -17,4 +15,4 @@ buttonHandler["onPublicJoinClicked"] = async function () {
         $join.text(originalText);
         throw e;
     }
-}
+};

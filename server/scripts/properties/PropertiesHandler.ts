@@ -8,11 +8,8 @@ const propertiesFile = Path.join(__dirname, "../../../constants/properties.csv")
 let properties: Array<any>;
 
 export class PropertiesHandler {
-
     static async init() {
-
         properties = await initProperties();
-        // console.log(properties.length)
     }
 
 }
@@ -40,6 +37,8 @@ function initProperties(): Promise<Array<any>> {
 
 
 }
+
+
 
 export function getProperties() {
 

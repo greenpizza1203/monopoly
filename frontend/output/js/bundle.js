@@ -86,46 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./debug/debugState.json":
-/*!*******************************!*\
-  !*** ./debug/debugState.json ***!
-  \*******************************/
-/*! exports provided: players, properties, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"players\":[{\"color\":\"#300\",\"name\":\"testa\",\"money\":\"300\"},{\"color\":\"#030\",\"name\":\"testb\",\"money\":\"1500\"}],\"properties\":[{\"name\":\"Mediterranean Avenue\",\"color\":\"#630\",\"cost\":60,\"houseLevel\":0,\"location\":1,\"rentCost\":[]},{\"name\":\"Baltic Avenue\",\"color\":\"#630\",\"cost\":60,\"houseLevel\":0,\"location\":3,\"rentCost\":[]},{\"name\":\"Oriental Avenue\",\"color\":\"#09C\",\"cost\":100,\"houseLevel\":0,\"location\":6,\"rentCost\":[]},{\"name\":\"Vermont Avenue\",\"color\":\"#09C\",\"cost\":100,\"houseLevel\":0,\"location\":8,\"rentCost\":[]},{\"name\":\"Connecticut Avenue\",\"color\":\"#09C\",\"cost\":120,\"houseLevel\":0,\"location\":9,\"rentCost\":[]},{\"name\":\"St. Charles Place\",\"color\":\"#C4C\",\"cost\":140,\"houseLevel\":0,\"location\":11,\"rentCost\":[]},{\"name\":\"States Avenue\",\"color\":\"#C4C\",\"cost\":140,\"houseLevel\":0,\"location\":13,\"rentCost\":[]},{\"name\":\"Virginia Avenue\",\"color\":\"#C4C\",\"cost\":160,\"houseLevel\":0,\"location\":14,\"rentCost\":[]},{\"name\":\"St. James Place\",\"color\":\"#F60\",\"cost\":180,\"houseLevel\":0,\"location\":16,\"rentCost\":[]},{\"name\":\"Tennessee Avenue\",\"color\":\"#F60\",\"cost\":180,\"houseLevel\":0,\"location\":18,\"rentCost\":[]},{\"name\":\"New York Avenue\",\"color\":\"#F60\",\"cost\":200,\"houseLevel\":0,\"location\":19,\"rentCost\":[]},{\"name\":\"Kentucky Avenue\",\"color\":\"#F00\",\"cost\":220,\"houseLevel\":0,\"location\":21,\"rentCost\":[]},{\"name\":\"Indiana Avenue\",\"color\":\"#F00\",\"cost\":220,\"houseLevel\":0,\"location\":23,\"rentCost\":[]},{\"name\":\"Illinois Avenue\",\"color\":\"#F00\",\"cost\":240,\"houseLevel\":0,\"location\":24,\"rentCost\":[]},{\"name\":\"Atlantic Avenue\",\"color\":\"#FF3\",\"cost\":260,\"houseLevel\":0,\"location\":26,\"rentCost\":[]},{\"name\":\"Ventnor Avenue\",\"color\":\"#FF3\",\"cost\":260,\"houseLevel\":0,\"location\":27,\"rentCost\":[]},{\"name\":\"Marvin Gardens\",\"color\":\"#FF3\",\"cost\":280,\"houseLevel\":0,\"location\":29,\"rentCost\":[]},{\"name\":\"Pacific Avenue\",\"color\":\"#393\",\"cost\":300,\"houseLevel\":0,\"location\":31,\"rentCost\":[]},{\"name\":\"North Carolina Avenue\",\"color\":\"#393\",\"cost\":300,\"houseLevel\":0,\"location\":32,\"rentCost\":[]},{\"name\":\"Pennsylvania Avenue\",\"color\":\"#393\",\"cost\":320,\"houseLevel\":0,\"location\":34,\"rentCost\":[]},{\"name\":\"Park Place\",\"color\":\"#006\",\"cost\":350,\"houseLevel\":0,\"location\":37,\"rentCost\":[]},{\"name\":\"Boardwalk\",\"color\":\"#006\",\"cost\":400,\"houseLevel\":0,\"location\":39,\"rentCost\":[]}]}");
-
-/***/ }),
-
-/***/ "./frontend/src/Debug/DebugHandler.ts":
-/*!********************************************!*\
-  !*** ./frontend/src/Debug/DebugHandler.ts ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const locationArray = ["bottom", "left", "top", "right"];
-class DebugHandler {
-    static getDebugState() {
-        let require1 = __webpack_require__(/*! ../../../debug/debugState.json */ "./debug/debugState.json");
-        require1.properties.forEach((prop) => {
-            prop.getSide = function () {
-                // console.log(this.location);
-                return locationArray[Math.floor(this.location / 10)];
-            };
-        });
-        return require1;
-    }
-}
-exports.default = DebugHandler;
-DebugHandler.enabled = true;
-
-
-/***/ }),
-
 /***/ "./frontend/src/colyhandler/colyhandler.ts":
 /*!*************************************************!*\
   !*** ./frontend/src/colyhandler/colyhandler.ts ***!
@@ -138,8 +98,8 @@ DebugHandler.enabled = true;
 Object.defineProperty(exports, "__esModule", { value: true });
 const colyseus_js_1 = __webpack_require__(/*! colyseus.js */ "./node_modules/colyseus.js/lib/index.js");
 const Renderer_1 = __webpack_require__(/*! ../renderer/Renderer */ "./frontend/src/renderer/Renderer.ts");
+const CookieHandler_1 = __webpack_require__(/*! ../cookiehandler/CookieHandler */ "./frontend/src/cookiehandler/CookieHandler.ts");
 let client;
-let username = "";
 class colyhandler {
     static init() {
         client = new colyseus_js_1.Client("ws://localhost:2567");
@@ -151,7 +111,7 @@ class colyhandler {
         // });
     }
     static join() {
-        return client.joinOrCreate("monopoly_room", { username: username });
+        return client.joinOrCreate("monopoly_room", { username: CookieHandler_1.getUsername() });
     }
     static joined(joinedRoom) {
         exports.room = joinedRoom;
@@ -170,7 +130,7 @@ exports.default = colyhandler;
 /*! exports provided: corner-ratio, border, imageList, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"corner-ratio\":0.135,\"border\":0,\"imageList\":{\"0\":\"collect_200\",\"10\":\"in_jail\",\"20\":\"free_parking\",\"30\":\"go_to_jail\"}}");
+module.exports = JSON.parse("{\"corner-ratio\":0.14,\"border\":0,\"imageList\":{\"0\":\"collect_200\",\"10\":\"in_jail\",\"20\":\"free_parking\",\"30\":\"go_to_jail\"}}");
 
 /***/ }),
 
@@ -201,6 +161,43 @@ exports.saveUsername = saveUsername;
 
 /***/ }),
 
+/***/ "./frontend/src/debug/DebugHandler.ts":
+/*!********************************************!*\
+  !*** ./frontend/src/debug/DebugHandler.ts ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const colyhandler_1 = __importDefault(__webpack_require__(/*! ../colyhandler/colyhandler */ "./frontend/src/colyhandler/colyhandler.ts"));
+class DebugHandler {
+    static doFakeStuff() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let room = yield colyhandler_1.default.join();
+            colyhandler_1.default.joined(room);
+        });
+    }
+}
+exports.default = DebugHandler;
+DebugHandler.enabled = true;
+
+
+/***/ }),
+
 /***/ "./frontend/src/index.ts":
 /*!*******************************!*\
   !*** ./frontend/src/index.ts ***!
@@ -223,6 +220,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const DebugHandler_1 = __importDefault(__webpack_require__(/*! ./debug/DebugHandler */ "./frontend/src/debug/DebugHandler.ts"));
 const $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 const Renderer_1 = __webpack_require__(/*! ./renderer/Renderer */ "./frontend/src/renderer/Renderer.ts");
 const colyhandler_1 = __importDefault(__webpack_require__(/*! ./colyhandler/colyhandler */ "./frontend/src/colyhandler/colyhandler.ts"));
@@ -231,7 +229,12 @@ function init() {
     return __awaiter(this, void 0, void 0, function* () {
         yield Renderer_1.createRenderer();
         colyhandler_1.default.init();
-        Renderer_1.renderInstance.displayTitleScreen();
+        if (!DebugHandler_1.default.enabled) {
+            Renderer_1.renderInstance.displayTitleScreen();
+        }
+        else {
+            yield DebugHandler_1.default.doFakeStuff();
+        }
     });
 }
 
@@ -297,10 +300,6 @@ function default_1(fileUrl) {
                 complete(it(data));
             });
         });
-        // console.log(files[fileUrl].responseText)
-        // return new Promise<JQuery>((complete) => {
-        //
-        //     }
     };
 }
 exports.default = default_1;
@@ -387,6 +386,25 @@ exports.handleTitleScreen = handleTitleScreen;
 
 /***/ }),
 
+/***/ "./frontend/src/properties/PropertyHelper.ts":
+/*!***************************************************!*\
+  !*** ./frontend/src/properties/PropertyHelper.ts ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const locationArray = ["bottom", "left", "top", "right"];
+function getPropertySide(prop) {
+    return locationArray[Math.floor(prop.location / 10)];
+}
+exports.getPropertySide = getPropertySide;
+
+
+/***/ }),
+
 /***/ "./frontend/src/renderer/FieldPropertyRenderer.ts":
 /*!********************************************************!*\
   !*** ./frontend/src/renderer/FieldPropertyRenderer.ts ***!
@@ -412,6 +430,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Renderer_1 = __webpack_require__(/*! ./Renderer */ "./frontend/src/renderer/Renderer.ts");
 const TemplateEngine_1 = __importDefault(__webpack_require__(/*! ../jquery/TemplateEngine */ "./frontend/src/jquery/TemplateEngine.ts"));
 const helpermethods_1 = __webpack_require__(/*! ../jquery/helpermethods */ "./frontend/src/jquery/helpermethods.ts");
+const PropertyHelper_1 = __webpack_require__(/*! ../properties/PropertyHelper */ "./frontend/src/properties/PropertyHelper.ts");
 var propTemplates = {
     bottom: TemplateEngine_1.default('html/properties/bottom_property.html'),
     left: TemplateEngine_1.default('html/properties/left_property.html'),
@@ -422,7 +441,7 @@ function fadeInRegularProperties(properties) {
     return __awaiter(this, void 0, void 0, function* () {
         for (const prop of properties) {
             let location = prop.location;
-            let side = prop.getSide();
+            let side = PropertyHelper_1.getPropertySide(prop);
             let htmlStringFunction = yield propTemplates[side]({
                 color: prop.color,
             });
@@ -484,9 +503,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const jquery_1 = __importDefault(__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"));
-const TemplateEngine_1 = __importDefault(__webpack_require__(/*! ../jquery/TemplateEngine */ "./frontend/src/jquery/TemplateEngine.ts"));
+const LeaderboardRowHandler_1 = __importDefault(__webpack_require__(/*! ./leaderboard/LeaderboardRowHandler */ "./frontend/src/renderer/leaderboard/LeaderboardRowHandler.ts"));
 let leaderboard;
-let playerTemplate = TemplateEngine_1.default('html/players/leaderboard-row.html');
+let rows = [];
 class LeaderboardRenderer {
     static generateLeaderBoard() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -494,26 +513,27 @@ class LeaderboardRenderer {
             jquery_1.default("body").append(leaderboard);
         });
     }
+    static update() {
+        rows.forEach((it) => it.update());
+    }
 }
 exports.default = LeaderboardRenderer;
 function fadeInLeaderBoard(players) {
     return __awaiter(this, void 0, void 0, function* () {
         for (const id in players) {
-            yield addPlayer(players[id]);
+            let row = new LeaderboardRowHandler_1.default(players[id]);
+            leaderboard.append(yield row.createElement());
+            rows.push(row);
         }
     });
 }
 exports.fadeInLeaderBoard = fadeInLeaderBoard;
-function addPlayer(player) {
-    return __awaiter(this, void 0, void 0, function* () {
-        let contents = yield playerTemplate({});
-        leaderboard.append(contents);
-        console.log(player);
-    });
-}
+// async function addPlayer(player: any) {
+//     console.log(player)
+// }
 function getLeaderBoard() {
     return __awaiter(this, void 0, void 0, function* () {
-        return jquery_1.default(yield jquery_1.default.get('html/players/leaderboard.html'));
+        return jquery_1.default(yield jquery_1.default.get('html/leaderboard/leaderboard.html'));
     });
 }
 
@@ -599,7 +619,14 @@ function resize() {
     jquery_1.default(".mainline").height(innerSize);
     let valueFunction1 = ((outerSize - innerSize * 2) / 9);
     jquery_1.default(".normalLine").height(valueFunction1);
-    let width = jquery_1.default("#leaderboard").width(sideWidth).width();
+    // $(".vertical").each((_, ele) => {
+    //         let htmlElements = $(ele);
+    //         let message: any = htmlElements.parent().parent().height();
+    //         htmlElements.height(message);
+    //         console.log(message);
+    //     }
+    // ).height(valueFunction1);
+    jquery_1.default("#leaderboard").width(sideWidth);
 }
 function getCenterCell() {
     let htmlElements = helpermethods_1.createElement('td');
@@ -657,6 +684,8 @@ class OutlineHandler {
         if (!height || !width)
             return;
         let size = Math.min(height, width);
+        size = Math.floor(size / 50) * 50;
+        console.log(size);
         // size -= 2;
         // border = size * constants['border'];
         outerSize = size; // - border * 2;
@@ -698,7 +727,6 @@ const jquery_1 = __importDefault(__webpack_require__(/*! jquery */ "./node_modul
 const OutlineHandler_1 = __importDefault(__webpack_require__(/*! ./OutlineHandler */ "./frontend/src/renderer/OutlineHandler.ts"));
 const titleScreen_1 = __webpack_require__(/*! ../pagelogic/titleScreen */ "./frontend/src/pagelogic/titleScreen.ts");
 const MainRenderer_1 = __importDefault(__webpack_require__(/*! ./MainRenderer */ "./frontend/src/renderer/MainRenderer.ts"));
-const DebugHandler_1 = __importDefault(__webpack_require__(/*! ../Debug/DebugHandler */ "./frontend/src/Debug/DebugHandler.ts"));
 const LeaderboardRenderer_1 = __importDefault(__webpack_require__(/*! ./LeaderboardRenderer */ "./frontend/src/renderer/LeaderboardRenderer.ts"));
 const colyhandler_1 = __webpack_require__(/*! ../colyhandler/colyhandler */ "./frontend/src/colyhandler/colyhandler.ts");
 exports.propertyCells = [];
@@ -726,9 +754,6 @@ class Renderer {
         return __awaiter(this, void 0, void 0, function* () {
             yield create();
             resizer();
-            if (DebugHandler_1.default.enabled) {
-                MainRenderer_1.default.init(DebugHandler_1.default.getDebugState());
-            }
         });
     }
     displayTitleScreen() {
@@ -746,9 +771,52 @@ class Renderer {
         }));
     }
     static handleStateChange(state) {
+        LeaderboardRenderer_1.default.update();
     }
 }
 exports.default = Renderer;
+
+
+/***/ }),
+
+/***/ "./frontend/src/renderer/leaderboard/LeaderboardRowHandler.ts":
+/*!********************************************************************!*\
+  !*** ./frontend/src/renderer/leaderboard/LeaderboardRowHandler.ts ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const TemplateEngine_1 = __importDefault(__webpack_require__(/*! ../../jquery/TemplateEngine */ "./frontend/src/jquery/TemplateEngine.ts"));
+let template = TemplateEngine_1.default('html/leaderboard/leaderboard-row.html');
+class LeaderboardRowHandler {
+    constructor(_player) {
+        this.player = _player;
+    }
+    createElement() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return template(this.player);
+        });
+    }
+    update() {
+        console.log(this.player.money);
+    }
+}
+exports.default = LeaderboardRowHandler;
 
 
 /***/ }),

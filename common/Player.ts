@@ -13,7 +13,6 @@ export class Player extends Schema {
     }
 
     move(distance: number) {
-        var newPos = this.position + distance;
-
+        this.position += distance;
     }
 }

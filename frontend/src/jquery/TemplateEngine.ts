@@ -12,19 +12,13 @@ async function promisify(fileUrl: string) {
 
 }
 
-export default function (fileUrl: string): (data: any) => Promise<unknown> {
+export default function (fileUrl: string): (data: any) => Promise<any> {
     if (!files[fileUrl]) files[fileUrl] = promisify(fileUrl);
-
     return function (data: any) {
         return new Promise((complete) => {
             files[fileUrl].then((it: any) => {
                 complete(it(data))
             })
         });
-
-        // console.log(files[fileUrl].responseText)
-        // return new Promise<JQuery>((complete) => {
-        //
-        //     }
     }
 }

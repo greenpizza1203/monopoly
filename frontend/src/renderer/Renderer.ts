@@ -6,7 +6,7 @@ import {handleTitleScreen} from "../pagelogic/titleScreen";
 import MainRenderer from "./MainRenderer";
 import DebugHandler from "../Debug/DebugHandler";
 import LeaderboardRenderer from "./LeaderboardRenderer";
-import {room} from "../colyhandler/colyhandler";
+import colyhandler, {room} from "../colyhandler/colyhandler";
 
 export let propertyCells: JQuery[] = [];
 
@@ -39,9 +39,7 @@ export default class Renderer {
     async init() {
         await create();
         resizer();
-        if (DebugHandler.enabled) {
-            MainRenderer.init(DebugHandler.getDebugState())
-        }
+
     }
 
 
@@ -64,6 +62,6 @@ export default class Renderer {
     }
 
     static handleStateChange(state: State) {
-
+        LeaderboardRenderer.update();
     }
 }

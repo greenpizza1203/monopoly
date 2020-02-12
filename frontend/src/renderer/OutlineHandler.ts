@@ -23,7 +23,14 @@ function resize() {
     $(".mainline").height(innerSize);
     let valueFunction1 = ((outerSize - innerSize * 2) / 9);
     $(".normalLine").height(valueFunction1);
-    let width = $("#leaderboard").width(sideWidth).width();
+    // $(".vertical").each((_, ele) => {
+    //         let htmlElements = $(ele);
+    //         let message: any = htmlElements.parent().parent().height();
+    //         htmlElements.height(message);
+    //         console.log(message);
+    //     }
+    // ).height(valueFunction1);
+    $("#leaderboard").width(sideWidth);
 
 }
 
@@ -37,7 +44,7 @@ function getCenterCell(): JQuery {
 }
 
 async function createOuterBox(): Promise<JQuery> {
-    let outerBox: any =  $(await $.ajax("html/mainTable/mainTable.html"));
+    let outerBox: any = $(await $.ajax("html/mainTable/mainTable.html"));
     for (let i = 0; i < 11; i++) {
         outerBox.append(createElement('tr'))
     }
@@ -91,6 +98,8 @@ export default class OutlineHandler {
         let width = $(window).width();
         if (!height || !width) return;
         let size = Math.min(height, width);
+        size = Math.floor(size/50)*50;
+        console.log(size);
         // size -= 2;
         // border = size * constants['border'];
         outerSize = size; // - border * 2;

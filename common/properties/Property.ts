@@ -1,6 +1,8 @@
 import {ArraySchema, Schema, type} from "@colyseus/schema"
 
-const locationArray = ["bottom", "left", "top", "right"];
+
+
+
 export class Property extends Schema {
     @type("string") name: string;
     @type("string") color: string;
@@ -29,7 +31,4 @@ export class Property extends Schema {
     }
 
 
-    getSide() {
-        return locationArray[Math.floor(this.location / 10)]
-    }
 }

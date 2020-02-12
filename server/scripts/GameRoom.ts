@@ -5,10 +5,13 @@ import {Move, MoveType} from "../../common/Move";
 import {Dice} from "../../common/State/Dice";
 
 import PlayerOptions from "../../common/PlayerOptions"
+import repl from "repl";
 
 export class GameRoom extends Room<State> {
     onCreate() {
         this.setState(new State());
+        (global as any).server = this;
+        const server = repl.start({useGlobal: true})
     }
 
     onJoin(client: Client, options: PlayerOptions) {

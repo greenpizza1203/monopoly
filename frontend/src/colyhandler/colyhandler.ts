@@ -1,11 +1,10 @@
-import $ from "jquery"
 import {Client, Room} from "colyseus.js";
-import renderer, {renderInstance} from "../renderer/Renderer";
+import {renderInstance} from "../renderer/Renderer";
 import {State} from "../../../common/State/State";
+import {getUsername} from "../cookiehandler/CookieHandler";
 
 let client: Client;
 export let room: Room<State>;
-let username: string | number | string[] | undefined = "";
 
 export default class colyhandler {
 
@@ -22,12 +21,11 @@ export default class colyhandler {
 
 
     static join() {
-        return client.joinOrCreate<State>("monopoly_room", {username: username});
+        return client.joinOrCreate<State>("monopoly_room", {username: getUsername()});
     }
 
     static joined(joinedRoom: Room<State>) {
         room = joinedRoom;
         renderInstance.mainScreen()
-
     }
 }
