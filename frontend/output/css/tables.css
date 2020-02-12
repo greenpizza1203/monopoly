@@ -4,10 +4,24 @@
     margin: 0 auto;
     table-layout: fixed;
 }
+
 #centerCell {
     background: white;
 
 }
+.sideColumn{
+    width: 14%;
+}
+.normaColumn{
+    width: 8%;
+}
+.mainLine{
+    height: 14%;
+}
+.normalLine {
+    height: 8%
+}
+
 tr {
     padding: 0;
     /*height: auto;*/
@@ -15,7 +29,7 @@ tr {
 
 td {
     /*display:inline-block;*/
-    overflow:hidden;
+    overflow: hidden;
     /*border: solid #000000;*/
     /*border-width: 0px;*/
     text-align: center;

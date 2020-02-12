@@ -1,5 +1,17 @@
 svg {
-    /*vertical-align: text-top;*/
-    /*height:100%;*/
     display: block;
+}
+
+.propFont {
+    font-size: 95%;
+    dominant-baseline: middle;
+}
+.propFont.left{
+    text-anchor: end;
+}
+.propFont.right{
+     text-anchor: start;
+ }
+.propFont.middle{
+    text-anchor: middle;
 }

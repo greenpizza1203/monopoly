@@ -1,23 +1,23 @@
 location,name,color,cost,site,house_1,house_2,house_3,house_4,hotel
-1,Mediterranean Avenue,#630,60,2,10,30,90,160,250
-3,Baltic Avenue,#630,60,4,20,60,180,320,450
-6,Oriental Avenue,#09C,100,6,30,90,270,400,550
-8,Vermont Avenue,#09C,100,6,30,90,270,400,550
-9,Connecticut Avenue,#09C,120,8,40,100,300,450,600
-11,St. Charles Place,#C4C,140,10,50,150,450,625,750
-13,States Avenue,#C4C,140,10,50,150,450,625,750
-14,Virginia Avenue,#C4C,160,12,60,180,500,700,900
-16,St. James Place,#F60,180,14,70,200,550,750,950
-18,Tennessee Avenue,#F60,180,14,70,200,550,750,950
-19,New York Avenue,#F60,200,16,80,220,600,800,1000
-21,Kentucky Avenue,#F00,220,18,90,250,700,875,1050
-23,Indiana Avenue,#F00,220,18,90,250,700,875,1050
-24,Illinois Avenue,#F00,240,20,100,300,750,925,1100
-26,Atlantic Avenue,#FF3,260,22,110,330,800,975,1150
-27,Ventnor Avenue,#FF3,260,22,110,330,800,975,1150
-29,Marvin Gardens,#FF3,280,24,120,360,850,1025,1200
-31,Pacific Avenue,#393,300,26,130,390,900,1100,1275
-32,North Carolina Avenue,#393,300,26,130,390,900,1100,1275
-34,Pennsylvania Avenue,#393,320,28,150,450,1000,1200,1400
-37,Park Place,#006,350,35,175,500,1100,1300,1500
-39,Boardwalk,#006,400,50,200,600,1400,1700,2000
+1,Mediterranean\nAvenue,#630,60,2,10,30,90,160,250
+3,Baltic\nAvenue,#630,60,4,20,60,180,320,450
+6,Oriental\nAvenue,#09C,100,6,30,90,270,400,550
+8,Vermont\nAvenue,#09C,100,6,30,90,270,400,550
+9,Connecticut\nAvenue,#09C,120,8,40,100,300,450,600
+11,St. Charles\nPlace,#C4C,140,10,50,150,450,625,750
+13,States\nAvenue,#C4C,140,10,50,150,450,625,750
+14,Virginia\nAvenue,#C4C,160,12,60,180,500,700,900
+16,St. James\nPlace,#F60,180,14,70,200,550,750,950
+18,Tennessee\nAvenue,#F60,180,14,70,200,550,750,950
+19,New York\nAvenue,#F60,200,16,80,220,600,800,1000
+21,Kentucky\nAvenue,#F00,220,18,90,250,700,875,1050
+23,Indiana\nAvenue,#F00,220,18,90,250,700,875,1050
+24,Illinois\nAvenue,#F00,240,20,100,300,750,925,1100
+26,Atlantic\nAvenue,#FF3,260,22,110,330,800,975,1150
+27,Ventnor\nAvenue,#FF3,260,22,110,330,800,975,1150
+29,Marvin\nGardens,#FF3,280,24,120,360,850,1025,1200
+31,Pacific\nAvenue,#393,300,26,130,390,900,1100,1275
+32,North\nCarolina\nAvenue,#393,300,26,130,390,900,1100,1275
+34,Pennsyl-\nvania\nAvenue,#393,320,28,150,450,1000,1200,1400
+37,Park\nPlace,#006,350,35,175,500,1100,1300,1500
+39,Board\nwalk,#006,400,50,200,600,1400,1700,2000

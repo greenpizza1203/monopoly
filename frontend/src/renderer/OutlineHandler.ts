@@ -1,7 +1,10 @@
 import $ from "jquery";
-import constants from "../constants.json";
+import {cornerRatio} from "../constants.json";
 import {handleAddingProperties} from "./FieldPropertyRenderer";
 import {createElement} from "../jquery/helpermethods";
+
+let largePercent = cornerRatio;
+let smallPercent = 1 - (cornerRatio * 2) / 9;
 
 let outerSize = 0;
 let innerSize = 0;
@@ -11,7 +14,6 @@ let heightMargin = 0;
 let sideWidth = 0;
 let outerBox: JQuery;
 
-// let properties: JQuery[] = [];
 
 function resize() {
     outerBox.width(outerSize);
@@ -22,7 +24,7 @@ function resize() {
     $(".sideline").width(innerSize);
     $(".mainline").height(innerSize);
     let valueFunction1 = ((outerSize - innerSize * 2) / 9);
-    $(".normalLine").height(valueFunction1);
+    // $(".normalLine").height(valueFunction1);
     // $(".vertical").each((_, ele) => {
     //         let htmlElements = $(ele);
     //         let message: any = htmlElements.parent().parent().height();
@@ -48,8 +50,8 @@ async function createOuterBox(): Promise<JQuery> {
     for (let i = 0; i < 11; i++) {
         outerBox.append(createElement('tr'))
     }
-    outerBox.children().first().addClass('mainline');
-    outerBox.children().last().addClass('mainline');
+    outerBox.children().first().addClass('mainline').height(largePercent);
+    outerBox.children().last().addClass('mainline').height(largePercent);
     outerBox.children().not(".mainline").addClass('normalLine');
     outerBox.children().eq(1).append(getCenterCell());
     return outerBox;
@@ -62,14 +64,14 @@ function finishCreateOuterBox() {
 
 function addColumnFormat(outerBox: JQuery<HTMLElement>) {
     let leftSideLine = createElement('col');
-    leftSideLine.addClass('sideline');
+    leftSideLine.addClass('sideColumn');
     outerBox.prepend(leftSideLine);
 
-    let most = createElement('col');
+    let most = createElement('col').addClass('normalColumn');
     most.attr('span', 9);
     outerBox.prepend(most);
     let rightSideLine = createElement('col');
-    rightSideLine.addClass('sideline');
+    rightSideLine.addClass('sideColumn');
     outerBox.prepend(rightSideLine);
 }
 
@@ -98,12 +100,12 @@ export default class OutlineHandler {
         let width = $(window).width();
         if (!height || !width) return;
         let size = Math.min(height, width);
-        size = Math.floor(size/50)*50;
-        console.log(size);
+        // size = Math.floor(size/50)*50;
+        // console.log(size);
         // size -= 2;
         // border = size * constants['border'];
         outerSize = size; // - border * 2;
-        innerSize = size * (constants["corner-ratio"]);
+        innerSize = size * (cornerRatio);
         smallSide = (outerSize - (innerSize * 2)) / 9;
         heightMargin = (height - size) / 2;
         sideWidth = (width - outerSize) / 2;

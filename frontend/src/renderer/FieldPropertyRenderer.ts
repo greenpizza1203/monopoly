@@ -1,10 +1,10 @@
-import { Property} from "../../../common/properties/Property";
+import {Property} from "../../../common/properties/Property";
 import {propertyCells} from "./Renderer";
 import template from "../jquery/TemplateEngine";
 import {createElement} from "../jquery/helpermethods";
 import {getPropertySide} from "../properties/PropertyHelper";
 
-var propTemplates: any = {
+const propTemplates: any = {
     bottom: template('html/properties/bottom_property.html'),
     left: template('html/properties/left_property.html'),
     right: template('html/properties/right_property.html'),
@@ -15,10 +15,14 @@ export async function fadeInRegularProperties(properties: Property[]) {
     for (const prop of properties) {
         let location = prop.location;
         let side = getPropertySide(prop);
+        // console.log(prop.name);
         let htmlStringFunction = await propTemplates[side]({
             color: prop.color,
+            names: prop.name.split('\\n')
         });
-        propertyCells[location].html(htmlStringFunction);
+
+        // console.log(htmlStringFunction);
+        propertyCells[location].append(htmlStringFunction);
     }
 }
 

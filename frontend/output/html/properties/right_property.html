@@ -1,4 +1,7 @@
 <svg class="vertical" viewBox=" 0 0 175 100" style="display: block;width: 100%;">
     <rect width="35" height="100" style="fill:{{:color}}"/>
+    {{for names}}
+    <text x="23%" y="{{:#index*20+45}}" class="propFont right">{{:#data}}</text>
+    {{/for}}
 </svg>
 

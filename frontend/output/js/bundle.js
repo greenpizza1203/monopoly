@@ -127,10 +127,10 @@ exports.default = colyhandler;
 /*!*************************************!*\
   !*** ./frontend/src/constants.json ***!
   \*************************************/
-/*! exports provided: corner-ratio, border, imageList, default */
+/*! exports provided: border, imageList, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"corner-ratio\":0.14,\"border\":0,\"imageList\":{\"0\":\"collect_200\",\"10\":\"in_jail\",\"20\":\"free_parking\",\"30\":\"go_to_jail\"}}");
+module.exports = JSON.parse("{\"border\":0,\"imageList\":{\"0\":\"collect_200\",\"10\":\"in_jail\",\"20\":\"free_parking\",\"30\":\"go_to_jail\"}}");
 
 /***/ }),
 
@@ -297,7 +297,7 @@ function default_1(fileUrl) {
     return function (data) {
         return new Promise((complete) => {
             files[fileUrl].then((it) => {
-                complete(it(data));
+                complete(jquery_1.default(it(data)));
             });
         });
     };
@@ -431,7 +431,7 @@ const Renderer_1 = __webpack_require__(/*! ./Renderer */ "./frontend/src/rendere
 const TemplateEngine_1 = __importDefault(__webpack_require__(/*! ../jquery/TemplateEngine */ "./frontend/src/jquery/TemplateEngine.ts"));
 const helpermethods_1 = __webpack_require__(/*! ../jquery/helpermethods */ "./frontend/src/jquery/helpermethods.ts");
 const PropertyHelper_1 = __webpack_require__(/*! ../properties/PropertyHelper */ "./frontend/src/properties/PropertyHelper.ts");
-var propTemplates = {
+const propTemplates = {
     bottom: TemplateEngine_1.default('html/properties/bottom_property.html'),
     left: TemplateEngine_1.default('html/properties/left_property.html'),
     right: TemplateEngine_1.default('html/properties/right_property.html'),
@@ -442,10 +442,13 @@ function fadeInRegularProperties(properties) {
         for (const prop of properties) {
             let location = prop.location;
             let side = PropertyHelper_1.getPropertySide(prop);
+            // console.log(prop.name);
             let htmlStringFunction = yield propTemplates[side]({
                 color: prop.color,
+                names: prop.name.split('\\n')
             });
-            Renderer_1.propertyCells[location].html(htmlStringFunction);
+            // console.log(htmlStringFunction);
+            Renderer_1.propertyCells[location].append(htmlStringFunction);
         }
     });
 }
@@ -599,9 +602,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const jquery_1 = __importDefault(__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"));
-const constants_json_1 = __importDefault(__webpack_require__(/*! ../constants.json */ "./frontend/src/constants.json"));
+const constants_json_1 = __webpack_require__(/*! ../constants.json */ "./frontend/src/constants.json");
 const FieldPropertyRenderer_1 = __webpack_require__(/*! ./FieldPropertyRenderer */ "./frontend/src/renderer/FieldPropertyRenderer.ts");
 const helpermethods_1 = __webpack_require__(/*! ../jquery/helpermethods */ "./frontend/src/jquery/helpermethods.ts");
+let largePercent = constants_json_1.cornerRatio;
+let smallPercent = 1 - (constants_json_1.cornerRatio * 2) / 9;
 let outerSize = 0;
 let innerSize = 0;
 let smallSide = 0;
@@ -609,7 +614,6 @@ let border = 0;
 let heightMargin = 0;
 let sideWidth = 0;
 let outerBox;
-// let properties: JQuery[] = [];
 function resize() {
     outerBox.width(outerSize);
     outerBox.height(outerSize);
@@ -618,7 +622,7 @@ function resize() {
     jquery_1.default(".sideline").width(innerSize);
     jquery_1.default(".mainline").height(innerSize);
     let valueFunction1 = ((outerSize - innerSize * 2) / 9);
-    jquery_1.default(".normalLine").height(valueFunction1);
+    // $(".normalLine").height(valueFunction1);
     // $(".vertical").each((_, ele) => {
     //         let htmlElements = $(ele);
     //         let message: any = htmlElements.parent().parent().height();
@@ -641,8 +645,8 @@ function createOuterBox() {
         for (let i = 0; i < 11; i++) {
             outerBox.append(helpermethods_1.createElement('tr'));
         }
-        outerBox.children().first().addClass('mainline');
-        outerBox.children().last().addClass('mainline');
+        outerBox.children().first().addClass('mainline').height(largePercent);
+        outerBox.children().last().addClass('mainline').height(largePercent);
         outerBox.children().not(".mainline").addClass('normalLine');
         outerBox.children().eq(1).append(getCenterCell());
         return outerBox;
@@ -653,13 +657,13 @@ function finishCreateOuterBox() {
 }
 function addColumnFormat(outerBox) {
     let leftSideLine = helpermethods_1.createElement('col');
-    leftSideLine.addClass('sideline');
+    leftSideLine.addClass('sideColumn');
     outerBox.prepend(leftSideLine);
-    let most = helpermethods_1.createElement('col');
+    let most = helpermethods_1.createElement('col').addClass('normalColumn');
     most.attr('span', 9);
     outerBox.prepend(most);
     let rightSideLine = helpermethods_1.createElement('col');
-    rightSideLine.addClass('sideline');
+    rightSideLine.addClass('sideColumn');
     outerBox.prepend(rightSideLine);
 }
 function createBackground() {
@@ -684,12 +688,12 @@ class OutlineHandler {
         if (!height || !width)
             return;
         let size = Math.min(height, width);
-        size = Math.floor(size / 50) * 50;
-        console.log(size);
+        // size = Math.floor(size/50)*50;
+        // console.log(size);
         // size -= 2;
         // border = size * constants['border'];
         outerSize = size; // - border * 2;
-        innerSize = size * (constants_json_1.default["corner-ratio"]);
+        innerSize = size * (constants_json_1.cornerRatio);
         smallSide = (outerSize - (innerSize * 2)) / 9;
         heightMargin = (height - size) / 2;
         sideWidth = (width - outerSize) / 2;

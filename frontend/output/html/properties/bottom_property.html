@@ -1,5 +1,7 @@
-<div style="height:100%; width:100%;" class="regularProperty">
-    <svg viewBox="0 0 100 175">
-        <rect width="90" height="35" style="fill:{{:color}}"/>
-    </svg>
-</div>
+<svg viewBox="0 0 100 175">
+
+    <rect width="100" height="35" style="fill:{{:color}}"/>
+    {{for names}}
+    <text x="50%" y="{{:#index*20+60}}" class="propFont middle">{{:#data}}</text>
+    {{/for}}
+</svg>
