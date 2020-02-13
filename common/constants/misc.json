@@ -2,5 +2,6 @@
   "luxury_tax": 100,
   "income_tax_flat": 200,
   "income_tax_ratio": 0.1,
-  "sell_ratio": 0.5
+  "sell_ratio": 0.5,
+  "collect_go": 200
 }

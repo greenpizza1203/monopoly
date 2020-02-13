@@ -6,7 +6,7 @@ import {Property} from "../properties/Property";
 
 
 export class State extends Schema {
-    @type(Player) currentTurn: Player | undefined;
+    @type(Player) currentTurn: Player | any;
     @type({map: Player}) players = new MapSchema<Player>();
     @type(Dice) dice: Dice = new Dice();
     @type([Property]) properties = getProperties();
